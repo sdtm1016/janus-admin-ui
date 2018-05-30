@@ -7,12 +7,16 @@ import {
   FormError as IceFormError,
 } from '@icedesign/form-binder';
 import { enquireScreen } from 'enquire-js';
+import FilterWithSearch from '../FilterWithSearch'
+import emitter from "../../utils/events";
 
 const { Row, Col } = Grid;
 
+
+
 const defaultValue = {
-  regionName: '',
-  regionId: '',
+  regionId: 'cn-beijing',
+  regionName: '北京',
   name: '',
   description: '',
   subDomain: '',
@@ -20,6 +24,7 @@ const defaultValue = {
 };
 
 export default class AddApiGroupFormDialog extends Component {
+
   static displayName = 'AddApiGroupFormDialog';
 
   constructor(props) {
@@ -75,6 +80,20 @@ export default class AddApiGroupFormDialog extends Component {
     });
   };
 
+  componentDidMount() {
+    this.eventEmitter = emitter.addListener("regionInfo", (regionInfo) => {
+      this.setState({
+        value: regionInfo
+      })
+    });
+  };
+
+  // 组件销毁前移除事件监听
+  componentWillUnmount() {
+    emitter.removeListener(this.eventEmitter);
+  };
+
+
   render() {
     const { isMobile } = this.state;
     const simpleFormDialog = {
@@ -108,6 +127,14 @@ export default class AddApiGroupFormDialog extends Component {
             onChange={this.onFormChange}
           >
             <div style={styles.dialogContent}>
+              <Row style={styles.formRow}>
+                <Col span={`${isMobile ? '6' : '3'}`}>
+                  <label style={styles.formLabel}>分组地域</label>
+                </Col>
+                <Col span={`${isMobile ? '18' : '6'}`}>
+                  <label style={styles.formLabel}>{this.state.value.regionName}({this.state.value.regionId})</label>
+                </Col>
+              </Row>
               <Row style={styles.formRow}>
                 <Col span={`${isMobile ? '6' : '3'}`}>
                   <label style={styles.formLabel}>分组名称</label>

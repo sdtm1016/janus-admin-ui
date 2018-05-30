@@ -11,20 +11,20 @@ import AddApiGroupFormDialog from '../../components/AddApiGroupFormDialog';
 @DataBinder({
   tableData: {
     // 详细请求配置请参见 https://github.com/axios/axios
-    url: '/mock/simple-table-list.json',
+    url: '/mock/api-group-table.json',
     params: {
       page: 1,
     },
     defaultBindingData: {
       list: [],
-      total: 100,
+      total: 10,
       pageSize: 10,
       currentPage: 1,
     },
   },
 })
-export default class SimpleTable extends Component {
-  static displayName = 'SimpleTable';
+export default class ApiGroupTable extends Component {
+  static displayName = 'ApiGroupTable';
 
   static propTypes = {};
 
@@ -62,29 +62,6 @@ export default class SimpleTable extends Component {
     });
   };
 
-  renderTitle = (value, index, record) => {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-        }}
-      >
-        <div>
-          <IceImg src={record.cover} width={48} height={48} />
-        </div>
-        <span
-          style={{
-            marginLeft: '10px',
-            lineHeight: '20px',
-          }}
-        >
-          {record.title}
-        </span>
-      </div>
-    );
-  };
-
   editItem = (record, e) => {
     e.preventDefault();
     // TODO: record 为该行所对应的数据，可自定义操作行为
@@ -101,23 +78,18 @@ export default class SimpleTable extends Component {
             this.editItem(record);
           }}
         >
-          解决
+          API管理
         </a>
         <a href="#" style={styles.operation} target="_blank">
-          详情
+          查看详情
         </a>
         <a href="#" style={styles.operation} target="_blank">
-          分类
+          环境管理
+        </a>
+        <a href="#" style={styles.operation} target="_blank">
+          删除
         </a>
       </div>
-    );
-  };
-
-  renderStatus = (value) => {
-    return (
-      <IceLabel inverse={false} status="default">
-        {value}
-      </IceLabel>
     );
   };
 
@@ -141,26 +113,20 @@ export default class SimpleTable extends Component {
             hasBorder={false}
           >
             <Table.Column
-              title="问题描述"
-              cell={this.renderTitle}
-              width={320}
+              title="分组"
+              dataIndex="name"
+              width={50}
             />
-            <Table.Column title="问题分类" dataIndex="type" width={85} />
+            <Table.Column title="描述" dataIndex="description" width={180} />
             <Table.Column
-              title="发布时间"
-              dataIndex="publishTime"
+              title="创建时间"
+              dataIndex="ctime"
               width={150}
-            />
-            <Table.Column
-              title="状态"
-              dataIndex="publishStatus"
-              width={85}
-              cell={this.renderStatus}
             />
             <Table.Column
               title="操作"
               dataIndex="operation"
-              width={150}
+              width={200}
               cell={this.renderOperations}
             />
           </Table>

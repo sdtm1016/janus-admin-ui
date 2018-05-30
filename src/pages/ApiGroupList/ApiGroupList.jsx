@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FilterWithSearch from './components/FilterWithSearch';
-import SimpleTable from './components/SimpleTable';
+import ApiGroupTable from './components/ApiGroupTable';
 
 
 export default class ApiGroupList extends Component {
@@ -15,7 +15,7 @@ export default class ApiGroupList extends Component {
     return (
       <div className="api-group-list-page">
         <FilterWithSearch />
-        <SimpleTable />
+        <ApiGroupTable />
       </div>
     );
   }
