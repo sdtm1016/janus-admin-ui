@@ -90,24 +90,24 @@ const asideMenuConfig = [
     icon: 'copy',
   },
   {
-    name: '\u6D41\u91CF\u63A7\u5236',
+    name: '流量控制',
     path: '/traffic/index',
-    icon: 'home',
+    icon: 'shezhi',
   },
   {
-    name: '\u7B7E\u540D\u5BC6\u5319',
+    name: '签名密匙',
     path: '/auth/index',
-    icon: 'home',
+    icon: 'shezhi',
   },
   {
-    name: 'IP\u8BBF\u95EE\u63A7\u5236',
+    name: 'IP访问控制',
     path: '/IPStrategy/index',
-    icon: 'home',
+    icon: 'shezhi',
   },
   {
-    name: '\u5E94\u7528\u7BA1\u7406',
+    name: '应用管理',
     path: '/app/index',
-    icon: 'home',
+    icon: 'yonghu',
   },
 ];
 
