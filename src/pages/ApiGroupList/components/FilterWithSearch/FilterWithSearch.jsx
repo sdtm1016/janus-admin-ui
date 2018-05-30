@@ -5,6 +5,11 @@ import './FilterWithSearch.scss';
 
 const { Row, Col } = Grid;
 
+const defaultValue = {
+  regionId: 'cn-beijing',
+  regionName: '北京'
+};
+
 export default class FilterWithSearch extends Component {
   static displayName = 'FilterWithSearch';
 
@@ -14,20 +19,30 @@ export default class FilterWithSearch extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      value: defaultValue
+    };
   }
 
-  selectFilter = (type) => {
-    console.log(type);
-    // type can be 'all', 'process', 'pending'
-    // handler
+  selectFilter = (regionId,regionName) => {
+    this.state.value.regionId = regionId;
+    this.state.value.regionName = regionName;
+    // this.forceUpdate();
+    this.setState({
+      value:{
+        regionId: regionId,
+        regionName: regionName
+      }
+    })
   };
+
 
   handleSearch = () => {
     // handler logical
   };
 
   render() {
+  
     return (
       <div className="filter-with-search" style={styles.filterWithSearch}>
         <IceContainer
@@ -37,33 +52,33 @@ export default class FilterWithSearch extends Component {
           <Row wrap justify="space-between" style={styles.row}>
             <Col xxs={24} s={8} style={styles.filterContainer}>
               <span
-                className="filter-item selected"
+                className={this.state.value.regionId == 'cn-beijing'  ? 'filter-item selected' : 'filter-item'}
                 style={styles.filterItem}
-                onClick={this.selectFilter.bind(this, 'all')}
+                onClick={this.selectFilter.bind(this, 'cn-beijing','北京')}
               >
-                全部
+                北京
               </span>
               <span
-                className="filter-item"
+                className={this.state.value.regionId == 'cn-shanghai' ? 'filter-item selected' : 'filter-item'}
                 style={styles.filterItem}
-                onClick={this.selectFilter.bind(this, 'process')}
+                onClick={this.selectFilter.bind(this, 'cn-shanghai','上海')}
               >
-                进行中
+                上海
               </span>
               <span
-                className="filter-item"
+                className={this.state.value.regionId == 'cn-hongkong' ? 'filter-item selected' : 'filter-item'}
                 style={styles.filterItem}
-                onClick={this.selectFilter.bind(this, 'pending')}
+                onClick={this.selectFilter.bind(this, 'cn-hongkong','香港')}
               >
-                等待中
+                香港
               </span>
             </Col>
-            <Col xxs={24} s={8} style={styles.searchWrapper}>
+            <Col xxs={24} s={16} style={styles.searchWrapper}>
               <Search
-                inputWidth={250}
+                inputWidth={150}
                 searchText=""
                 size="large"
-                placeholder="请输入要搜索的关键词或商品链接"
+                placeholder="请输入API分组名称"
                 onSearch={this.handleSearch}
                 style={{ display: 'inline-block' }}
               />
