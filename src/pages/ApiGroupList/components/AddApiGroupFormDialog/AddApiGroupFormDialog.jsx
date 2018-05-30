@@ -12,9 +12,12 @@ const { Row, Col } = Grid;
 const { Group: RadioGroup } = Radio;
 
 const defaultValue = {
-  keywords: '',
-  type: 'post',
-  content: '',
+  regionName: '',
+  regionId: '',
+  name: '',
+  description: '',
+  subdomain: '',
+  trafficLimit: 500
 };
 
 export default class AddApiGroupFormDialog extends Component {
@@ -90,7 +93,7 @@ export default class AddApiGroupFormDialog extends Component {
           style={simpleFormDialog}
           autoFocus={false}
           footerAlign="center"
-          title="简单表单"
+          title="创建分组"
           {...this.props}
           onOk={this.onOk}
           onCancel={this.hideDialog}
@@ -108,58 +111,81 @@ export default class AddApiGroupFormDialog extends Component {
             <div style={styles.dialogContent}>
               <Row style={styles.formRow}>
                 <Col span={`${isMobile ? '6' : '3'}`}>
-                  <label style={styles.formLabel}>关键词</label>
+                  <label style={styles.formLabel}>分组名称</label>
                 </Col>
                 <Col span={`${isMobile ? '18' : '16'}`}>
                   <IceFormBinder
                     required
-                    min={2}
-                    max={10}
-                    message="当前字段必填，且最少 2 个字最多 10 个字"
+                    min={5}
+                    max={50}
+                    message="名称非法,名称必须唯一，支持汉字、英文字母、数字、英文格式的下划线，必须以英文字母或汉字开头，4~50个字符"
                   >
                     <Input
-                      name="keywords"
+                      name="name"
                       style={styles.input}
-                      placeholder="多关键词用英文 , 号分割"
+                      placeholder="请输入分组名称"
                     />
                   </IceFormBinder>
-                  <IceFormError name="keywords" />
+                  <IceFormError name="name" />
                 </Col>
               </Row>
               <Row style={styles.formRow}>
-                <Col>
-                  <IceFormBinder>
-                    <RadioGroup
-                      name="type"
-                      dataSource={[
-                        {
-                          value: 'post',
-                          label: '文章',
-                        },
-                        {
-                          value: 'video',
-                          label: '视频',
-                        },
-                        {
-                          value: 'image',
-                          label: '图片',
-                        },
-                      ]}
-                    />
-                  </IceFormBinder>
+                <Col span={`${isMobile ? '6' : '3'}`}>
+                  <label style={styles.formLabel}>子域地址</label>
                 </Col>
-              </Row>
-              <Row style={styles.formRow}>
-                <Col>
-                  <IceFormBinder>
+                <Col span={`${isMobile ? '18' : '16'}`}>
+                  <IceFormBinder
+                    required
+                    min={5}
+                    max={255}
+                    message="子域地址非法"
+                  >
                     <Input
-                      name="content"
+                      name="subDomain"
+                      style={styles.input}
+                      placeholder="请输入子域地址"
+                    />
+                  </IceFormBinder>
+                  <IceFormError name="subDomain" />
+                </Col>
+              </Row>
+              <Row style={styles.formRow}>
+                <Col span={`${isMobile ? '6' : '3'}`}>
+                  <label style={styles.formLabel}>QPS</label>
+                </Col>
+                <Col span={`${isMobile ? '18' : '16'}`}>
+                  <IceFormBinder
+                    required
+                    min={1}
+                    max={3}
+                    message="流量限制非法,需为1-1000"
+                  >
+                    <Input
+                      name="trafficLimit"
+                      style={styles.input}
+                      placeholder="请输入流量限制"
+                    />
+                  </IceFormBinder>
+                  <IceFormError name="trafficLimit" />
+                </Col>
+              </Row>
+              <Row style={styles.formRow}>
+                <Col>
+                  <IceFormBinder
+                    required
+                    min={1}
+                    max={180}
+                    message="分组名称长度不符合要求,请控制在0-180个字符"
+                  >
+                    <Input
+                      name="description"
                       style={styles.input}
                       multiple
-                      placeholder="请输入详细内容"
+                      placeholder="请输入分组详细描述"
                       rows={4}
                     />
                   </IceFormBinder>
+                  <IceFormError name="description" />                  
                 </Col>
               </Row>
             </div>
@@ -168,7 +194,7 @@ export default class AddApiGroupFormDialog extends Component {
         <Row>
           <Col xxs={24} s={4} offset={20}>
             <Button type="primary" size="small" onClick={this.showDialog}>
-              新建API分组
+              创建分组
             </Button>
           </Col>
         </Row>
