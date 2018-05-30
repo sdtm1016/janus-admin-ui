@@ -19,13 +19,35 @@ import NavigationSetting from './pages/NavigationSetting';
 import NotFound from './pages/NotFound';
 
 import ApiGroupList from './pages/ApiGroupList';
+
+import ApiList from './pages/ApiList';
+
+import TrafficLimitList from './pages/TrafficLimitList';
+
+import ServiceAuthList from './pages/ServiceAuthList';
+
+import IpStrategyList from './pages/IpStrategyList';
+
+import AppList from './pages/AppList';
 import Login from './pages/Login';
 
 const routerConfig = [
   {
-    path: '/login',
-    layout: BlankLayout,
-    component: Login,
+    path: '/post',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: PostList,
+    children: [
+      {
+        path: 'list',
+        layout: HeaderAsideFooterResponsiveLayout,
+        component: PostList,
+      },
+      {
+        path: 'create',
+        layout: HeaderAsideFooterResponsiveLayout,
+        component: CreatePost,
+      },
+    ],
   },
   {
     path: '/',
@@ -89,6 +111,11 @@ const routerConfig = [
     ],
   },
   {
+    path: '/login',
+    layout: BlankLayout,
+    component: Login,
+  },
+  {
     path: '/cate',
     layout: HeaderAsideFooterResponsiveLayout,
     component: CateList,
@@ -106,26 +133,34 @@ const routerConfig = [
     ],
   },
   {
-    path: '/post',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: PostList,
-    children: [
-      {
-        path: 'list',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: PostList,
-      },
-      {
-        path: 'create',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: CreatePost,
-      },
-    ],
-  },
-  {
     path: '/group/index',
     layout: HeaderAsideFooterResponsiveLayout,
     component: ApiGroupList,
+  },
+  {
+    path: '/api/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: ApiList,
+  },
+  {
+    path: '/traffic/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: TrafficLimitList,
+  },
+  {
+    path: '/auth/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: ServiceAuthList,
+  },
+  {
+    path: '/IPStrategy/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: IpStrategyList,
+  },
+  {
+    path: '/app/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: AppList,
   },
   {
     path: '*',

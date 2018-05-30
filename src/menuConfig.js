@@ -84,6 +84,31 @@ const asideMenuConfig = [
     path: '/group/index',
     icon: 'cascades',
   },
+  {
+    name: 'API管理',
+    path: '/api/index',
+    icon: 'copy',
+  },
+  {
+    name: '\u6D41\u91CF\u63A7\u5236',
+    path: '/traffic/index',
+    icon: 'home',
+  },
+  {
+    name: '\u7B7E\u540D\u5BC6\u5319',
+    path: '/auth/index',
+    icon: 'home',
+  },
+  {
+    name: 'IP\u8BBF\u95EE\u63A7\u5236',
+    path: '/IPStrategy/index',
+    icon: 'home',
+  },
+  {
+    name: '\u5E94\u7528\u7BA1\u7406',
+    path: '/app/index',
+    icon: 'home',
+  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };
