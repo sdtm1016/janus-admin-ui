@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import { Dialog, Grid, Input, Radio, Button } from '@icedesign/base';
+import { Button, Dialog, Grid, Input } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
 import {
-  FormBinderWrapper as IceFormBinderWrapper,
   FormBinder as IceFormBinder,
+  FormBinderWrapper as IceFormBinderWrapper,
   FormError as IceFormError,
 } from '@icedesign/form-binder';
 import { enquireScreen } from 'enquire-js';
 
 const { Row, Col } = Grid;
-const { Group: RadioGroup } = Radio;
 
 const defaultValue = {
   regionName: '',
   regionId: '',
   name: '',
   description: '',
-  subdomain: '',
-  trafficLimit: 500
+  subDomain: '',
+  trafficLimit: 500,
 };
 
 export default class AddApiGroupFormDialog extends Component {
@@ -185,7 +184,7 @@ export default class AddApiGroupFormDialog extends Component {
                       rows={4}
                     />
                   </IceFormBinder>
-                  <IceFormError name="description" />                  
+                  <IceFormError name="description" />
                 </Col>
               </Row>
             </div>

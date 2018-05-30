@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
-import { Chart, Axis, Geom, Tooltip } from 'bizcharts';
+import { Axis, Chart, Geom, Tooltip } from 'bizcharts';
 import './DataStatistics.scss';
 
 const { Row, Col } = Grid;

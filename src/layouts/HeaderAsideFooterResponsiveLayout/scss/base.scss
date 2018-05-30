@@ -55,7 +55,7 @@ body {
     .ice-design-layout-header {
       width: 100%;
       padding: 20px 0;
-      margin: 0px auto;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -111,8 +111,8 @@ body {
       }
 
       .ice-menu.ice-menu-root.ice-menu-inline
-        > .ice-menu-submenu
-        > .ice-menu-submenu-title,
+      > .ice-menu-submenu
+      > .ice-menu-submenu-title,
       .ice-menu.ice-menu-root.ice-menu-inline > .ice-menu-item {
         margin-bottom: 1px;
         color: $ice-aside-text-color;
@@ -130,9 +130,9 @@ body {
         color: #fff;
         border-radius: 6px;
         background-image: linear-gradient(
-          90deg,
-          $ice-aside-menu-item-selected-gradient-left-bg 0%,
-          $ice-aside-menu-item-selected-gradient-right-bg 100%
+            90deg,
+            $ice-aside-menu-item-selected-gradient-left-bg 0%,
+            $ice-aside-menu-item-selected-gradient-right-bg 100%
         );
       }
 
@@ -145,9 +145,9 @@ body {
       .ice-menu:not(.ice-menu-horizontal) .ice-menu-item-selected {
         border-radius: 6px;
         background-image: linear-gradient(
-          90deg,
-          $ice-aside-menu-item-selected-gradient-left-bg 0%,
-          $ice-aside-menu-item-selected-gradient-right-bg 100%
+            90deg,
+            $ice-aside-menu-item-selected-gradient-left-bg 0%,
+            $ice-aside-menu-item-selected-gradient-right-bg 100%
         );
       }
 
@@ -181,9 +181,9 @@ body {
             color: $ice-aside-menu-item-selected-text-color;
             border-radius: 6px;
             background-image: linear-gradient(
-              90deg,
-              $ice-aside-menu-item-selected-gradient-left-bg 0%,
-              $ice-aside-menu-item-selected-gradient-right-bg 100%
+                90deg,
+                $ice-aside-menu-item-selected-gradient-left-bg 0%,
+                $ice-aside-menu-item-selected-gradient-right-bg 100%
             );
           }
         }
@@ -213,8 +213,8 @@ body {
       }
 
       .ice-menu.ice-menu-collapse
-        .ice-menu-submenu.ice-menu-submenu-active
-        > .ice-menu-submenu-title {
+      .ice-menu-submenu.ice-menu-submenu-active
+      > .ice-menu-submenu-title {
         background: transparent;
         color: #fff;
         &:hover:before {
@@ -223,18 +223,18 @@ body {
       }
 
       .ice-menu.ice-menu-collapse
-        > .ice-menu-submenu-active
-        > .ice-menu-submenu-title:before,
+      > .ice-menu-submenu-active
+      > .ice-menu-submenu-title:before,
       .ice-menu.ice-menu-collapse
-        > .ice-menu-submenu-selected
-        > .ice-menu-submenu-title:before,
+      > .ice-menu-submenu-selected
+      > .ice-menu-submenu-title:before,
       .ice-menu.ice-menu-collapse .ice-menu-item:hover:before {
         width: 0;
       }
 
       .ice-menu.ice-menu-collapse
-        .ice-menu:not(.ice-menu-horizontal)
-        .ice-menu-item-selected {
+      .ice-menu:not(.ice-menu-horizontal)
+      .ice-menu-item-selected {
         background: $ice-aside-menu-collapse-bg;
         a {
           color: $ice-aside-menu-collapse-selected-text-color;
@@ -242,12 +242,12 @@ body {
       }
 
       .ice-menu.ice-menu-collapse
-        > .ice-menu-submenu-selected
-        > .ice-menu-submenu-title {
+      > .ice-menu-submenu-selected
+      > .ice-menu-submenu-title {
         background-image: linear-gradient(
-          90deg,
-          $ice-aside-menu-item-selected-gradient-left-bg 0%,
-          $ice-aside-menu-item-selected-gradient-right-bg 100%
+            90deg,
+            $ice-aside-menu-item-selected-gradient-left-bg 0%,
+            $ice-aside-menu-item-selected-gradient-right-bg 100%
         );
         color: $ice-aside-menu-item-selected-text-color;
         &:before {
@@ -338,7 +338,7 @@ body {
       .ice-design-layout-aside {
         position: fixed;
         left: -240px;
-        top: 0px;
+        top: 0;
         bottom: 0;
         padding: 0 20px;
         background: #2e323e;
@@ -360,7 +360,7 @@ body {
 
       .open-drawer-bg {
         position: fixed;
-        top: 0px;
+        top: 0;
         left: 0;
         right: 0;
         bottom: 0;

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { Input, Grid, Select, Button, DatePicker } from '@icedesign/base';
-
+import { Button, DatePicker, Grid, Input, Select } from '@icedesign/base';
 // form binder 详细用法请参见官方文档
-import {
-  FormBinderWrapper as IceFormBinderWrapper,
-  FormBinder as IceFormBinder,
-} from '@icedesign/form-binder';
+import { FormBinder as IceFormBinder, FormBinderWrapper as IceFormBinderWrapper } from '@icedesign/form-binder';
 
 const { Row, Col } = Grid;
 const { Option } = Select;

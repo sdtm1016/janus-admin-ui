@@ -1,10 +1,10 @@
 /* eslint react/no-string-refs:0 */
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Input, Grid, Button, Feedback } from '@icedesign/base';
+import { Button, Feedback, Grid, Input } from '@icedesign/base';
 import {
-  FormBinderWrapper as IceFormBinderWrapper,
   FormBinder as IceFormBinder,
+  FormBinderWrapper as IceFormBinderWrapper,
   FormError as IceFormError,
 } from '@icedesign/form-binder';
 import './ChangePasswordForm.scss';

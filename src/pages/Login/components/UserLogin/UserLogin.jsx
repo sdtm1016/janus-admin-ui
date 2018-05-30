@@ -1,10 +1,10 @@
 /* eslint react/no-string-refs:0 */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Input, Button, Checkbox, Grid } from '@icedesign/base';
+import { Button, Checkbox, Grid, Input } from '@icedesign/base';
 import {
-  FormBinderWrapper as IceFormBinderWrapper,
   FormBinder as IceFormBinder,
+  FormBinderWrapper as IceFormBinderWrapper,
   FormError as IceFormError,
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';

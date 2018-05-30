@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import Layout from '@icedesign/layout';
 import { Icon } from '@icedesign/base';
-import Menu, { SubMenu, Item as MenuItem } from '@icedesign/menu';
+import Menu, { Item as MenuItem, SubMenu } from '@icedesign/menu';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import FoundationSymbol from 'foundation-symbol';
@@ -124,11 +124,11 @@ export default class HeaderAsideFooterResponsiveLayout extends Component {
     let openKeys = [];
 
     Array.isArray(asideMenuConfig) &&
-      asideMenuConfig.forEach((item, index) => {
-        if (matched.startsWith(item.path)) {
-          openKeys = [`${index}`];
-        }
-      });
+    asideMenuConfig.forEach((item, index) => {
+      if (matched.startsWith(item.path)) {
+        openKeys = [`${index}`];
+      }
+    });
 
     return openKeys;
   };
@@ -188,66 +188,66 @@ export default class HeaderAsideFooterResponsiveLayout extends Component {
               onClick={this.onMenuClick}
             >
               {Array.isArray(asideMenuConfig) &&
-                asideMenuConfig.length > 0 &&
-                asideMenuConfig.map((nav, index) => {
-                  if (nav.children && nav.children.length > 0) {
-                    return (
-                      <SubMenu
-                        key={index}
-                        title={
-                          <span>
-                            {nav.icon ? (
-                              <FoundationSymbol size="small" type={nav.icon} />
-                            ) : null}
-                            <span className="ice-menu-collapse-hide">
-                              {nav.name}
-                            </span>
-                          </span>
-                        }
-                      >
-                        {nav.children.map((item) => {
-                          const linkProps = {};
-                          if (item.newWindow) {
-                            linkProps.href = item.path;
-                            linkProps.target = '_blank';
-                          } else if (item.external) {
-                            linkProps.href = item.path;
-                          } else {
-                            linkProps.to = item.path;
-                          }
-                          return (
-                            <MenuItem key={item.path}>
-                              <Link {...linkProps}>{item.name}</Link>
-                            </MenuItem>
-                          );
-                        })}
-                      </SubMenu>
-                    );
-                  }
-                  const linkProps = {};
-                  if (nav.newWindow) {
-                    linkProps.href = nav.path;
-                    linkProps.target = '_blank';
-                  } else if (nav.external) {
-                    linkProps.href = nav.path;
-                  } else {
-                    linkProps.to = nav.path;
-                  }
+              asideMenuConfig.length > 0 &&
+              asideMenuConfig.map((nav, index) => {
+                if (nav.children && nav.children.length > 0) {
                   return (
-                    <MenuItem key={nav.path}>
-                      <Link {...linkProps}>
+                    <SubMenu
+                      key={index}
+                      title={
                         <span>
                           {nav.icon ? (
                             <FoundationSymbol size="small" type={nav.icon} />
-                          ) : null}
+                            ) : null}
                           <span className="ice-menu-collapse-hide">
                             {nav.name}
                           </span>
                         </span>
-                      </Link>
-                    </MenuItem>
+                      }
+                    >
+                      {nav.children.map((item) => {
+                        const linkProps = {};
+                        if (item.newWindow) {
+                          linkProps.href = item.path;
+                          linkProps.target = '_blank';
+                        } else if (item.external) {
+                          linkProps.href = item.path;
+                        } else {
+                          linkProps.to = item.path;
+                        }
+                        return (
+                          <MenuItem key={item.path}>
+                            <Link {...linkProps}>{item.name}</Link>
+                          </MenuItem>
+                        );
+                      })}
+                    </SubMenu>
                   );
-                })}
+                }
+                const linkProps = {};
+                if (nav.newWindow) {
+                  linkProps.href = nav.path;
+                  linkProps.target = '_blank';
+                } else if (nav.external) {
+                  linkProps.href = nav.path;
+                } else {
+                  linkProps.to = nav.path;
+                }
+                return (
+                  <MenuItem key={nav.path}>
+                    <Link {...linkProps}>
+                      <span>
+                        {nav.icon ? (
+                          <FoundationSymbol size="small" type={nav.icon} />
+                          ) : null}
+                        <span className="ice-menu-collapse-hide">
+                          {nav.name}
+                        </span>
+                      </span>
+                    </Link>
+                  </MenuItem>
+                );
+              })}
             </Menu>
             {/* 侧边菜单项 end */}
           </Layout.Aside>

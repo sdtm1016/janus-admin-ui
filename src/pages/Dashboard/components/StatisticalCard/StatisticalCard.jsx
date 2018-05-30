@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
 import { enquireScreen } from 'enquire-js';
-import { Balloon, Icon, Grid } from '@icedesign/base';
+import { Balloon, Grid, Icon } from '@icedesign/base';
 
 const { Row, Col } = Grid;
 

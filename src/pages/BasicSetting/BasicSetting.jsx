@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react';
 import CustomBreadcrumb from '../../components/CustomBreadcrumb';
 import SettingsForm from './components/SettingsForm';

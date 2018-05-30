@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dialog, Button, Form, Input, Field } from '@icedesign/base';
+import { Button, Dialog, Field, Form, Input } from '@icedesign/base';
 
 const FormItem = Form.Item;
 

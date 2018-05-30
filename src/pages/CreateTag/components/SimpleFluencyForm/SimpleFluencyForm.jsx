@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Grid, Input, Button, Feedback } from '@icedesign/base';
-import {
-  FormBinderWrapper,
-  FormBinder,
-  FormError,
-} from '@icedesign/form-binder';
+import { Button, Feedback, Grid, Input } from '@icedesign/base';
+import { FormBinder, FormBinderWrapper, FormError } from '@icedesign/form-binder';
 import './SimpleFluencyForm.scss';
 
 const { Row, Col } = Grid;

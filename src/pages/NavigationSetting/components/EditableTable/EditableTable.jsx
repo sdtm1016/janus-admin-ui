@@ -1,7 +1,7 @@
 /* eslint react/jsx-no-bind: 0 */
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Table, Button } from '@icedesign/base';
+import { Button, Table } from '@icedesign/base';
 import CellEditor from './CellEditor';
 import './EditableTable.scss';
 

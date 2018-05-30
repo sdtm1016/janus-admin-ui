@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Search, Grid } from '@icedesign/base';
+import { Grid, Search } from '@icedesign/base';
 import './FilterWithSearch.scss';
 
 const { Row, Col } = Grid;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Balloon } from '@icedesign/base';
+import { Balloon, Button } from '@icedesign/base';
 import PropTypes from 'prop-types';
 
 export default class DeleteBalloon extends Component {
@@ -8,7 +8,8 @@ export default class DeleteBalloon extends Component {
   };
 
   static defaultProps = {
-    handleRemove: () => {},
+    handleRemove: () => {
+    },
   };
 
   constructor(props) {

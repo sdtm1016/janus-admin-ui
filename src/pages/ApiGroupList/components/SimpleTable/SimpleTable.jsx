@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Pagination } from '@icedesign/base';
+import { Pagination, Table } from '@icedesign/base';
 import IceContainer from '@icedesign/container';
 import IceImg from '@icedesign/img';
 import DataBinder from '@icedesign/data-binder';
@@ -185,7 +185,7 @@ const styles = {
     textDecoration: 'none',
   },
   SimpleFormDialog: {
-    align: 'right'
+    align: 'right',
   },
   paginationWrapper: {
     textAlign: 'right',
