@@ -17,6 +17,8 @@ import EditPassword from './pages/EditPassword';
 import BasicSetting from './pages/BasicSetting';
 import NavigationSetting from './pages/NavigationSetting';
 import NotFound from './pages/NotFound';
+
+import ApiGroupList from './pages/ApiGroupList';
 import Login from './pages/Login';
 
 const routerConfig = [
@@ -119,6 +121,11 @@ const routerConfig = [
         component: CreatePost,
       },
     ],
+  },
+  {
+    path: '/group/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: ApiGroupList,
   },
   {
     path: '*',

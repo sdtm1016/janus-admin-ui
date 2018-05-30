@@ -79,6 +79,11 @@ const asideMenuConfig = [
       },
     ],
   },
+  {
+    name: '分组管理',
+    path: '/group/index',
+    icon: 'cascades',
+  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };
