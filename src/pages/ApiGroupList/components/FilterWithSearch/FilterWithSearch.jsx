@@ -58,7 +58,7 @@ export default class FilterWithSearch extends Component {
                 等待中
               </span>
             </Col>
-            <Col xxs={24} s={16} style={styles.searchWrapper}>
+            <Col xxs={24} s={8} style={styles.searchWrapper}>
               <Search
                 inputWidth={250}
                 searchText=""

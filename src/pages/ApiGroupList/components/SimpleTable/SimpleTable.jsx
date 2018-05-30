@@ -6,6 +6,7 @@ import DataBinder from '@icedesign/data-binder';
 import IceLabel from '@icedesign/label';
 
 import { enquireScreen } from 'enquire-js';
+import AddApiGroupFormDialog from '../../components/AddApiGroupFormDialog';
 
 @DataBinder({
   tableData: {
@@ -132,6 +133,7 @@ export default class SimpleTable extends Component {
     return (
       <div className="simple-table">
         <IceContainer>
+          <AddApiGroupFormDialog />
           <Table
             dataSource={tableData.list}
             isLoading={tableData.__loading} // eslint-disable-line
@@ -181,6 +183,9 @@ const styles = {
   operation: {
     marginRight: '12px',
     textDecoration: 'none',
+  },
+  SimpleFormDialog: {
+    align: 'right'
   },
   paginationWrapper: {
     textAlign: 'right',
