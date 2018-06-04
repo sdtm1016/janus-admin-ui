@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterWithSearch from './components/FilterWithSearch';
+import RegionFilterAndSearch from '../RegionFilterAndSearch';
 import ApiGroupTable from './components/ApiGroupTable';
 
 
@@ -14,7 +14,7 @@ export default class ApiGroupList extends Component {
   render() {
     return (
       <div className="api-group-list-page">
-        <FilterWithSearch />
+        <RegionFilterAndSearch />
         <ApiGroupTable />
       </div>
     );

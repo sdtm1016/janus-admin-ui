@@ -7,11 +7,8 @@ import {
   FormError as IceFormError,
 } from '@icedesign/form-binder';
 import { enquireScreen } from 'enquire-js';
-import RegionFilterAndSearch from '../../../RegionFilterAndSearch';
-import emitter from "../../../../utils/events";
 
 const { Row, Col } = Grid;
-
 
 
 const defaultValue = {
@@ -80,19 +77,6 @@ export default class AddApiGroupFormDialog extends Component {
     });
   };
 
-  componentDidMount() {
-    this.eventEmitter = emitter.addListener("regionInfo", (regionInfo) => {
-      this.setState({
-        value: regionInfo
-      })
-    });
-  };
-
-  // 组件销毁前移除事件监听
-  componentWillUnmount() {
-    emitter.removeListener(this.eventEmitter);
-  };
-
 
   render() {
     const { isMobile } = this.state;
@@ -111,7 +95,7 @@ export default class AddApiGroupFormDialog extends Component {
           style={simpleFormDialog}
           autoFocus={false}
           footerAlign="center"
-          title="创建分组"
+          title="修改分组"
           {...this.props}
           onOk={this.onOk}
           onCancel={this.hideDialog}
@@ -132,7 +116,7 @@ export default class AddApiGroupFormDialog extends Component {
                   <label style={styles.formLabel}>分组地域</label>
                 </Col>
                 <Col span={`${isMobile ? '18' : '6'}`}>
-                  <label style={styles.formLabel}>{this.state.value.regionName}({this.state.value.regionId})</label>
+                  <label style={styles.formLabel}>{this.props.regionName}({this.props.regionId})</label>
                 </Col>
               </Row>
               <Row style={styles.formRow}>
@@ -150,6 +134,7 @@ export default class AddApiGroupFormDialog extends Component {
                       name="name"
                       style={styles.input}
                       placeholder="请输入分组名称"
+                      value={this.props.name}
                     />
                   </IceFormBinder>
                   <IceFormError name="name" />
@@ -170,6 +155,7 @@ export default class AddApiGroupFormDialog extends Component {
                       name="subDomain"
                       style={styles.input}
                       placeholder="请输入子域地址"
+                      value={this.props.subDomain}
                     />
                   </IceFormBinder>
                   <IceFormError name="subDomain" />
@@ -190,6 +176,7 @@ export default class AddApiGroupFormDialog extends Component {
                       name="trafficLimit"
                       style={styles.input}
                       placeholder="请输入流量限制"
+                      value={this.props.trafficLimit}
                     />
                   </IceFormBinder>
                   <IceFormError name="trafficLimit" />
@@ -209,6 +196,7 @@ export default class AddApiGroupFormDialog extends Component {
                       multiple
                       placeholder="请输入分组详细描述"
                       rows={4}
+                      value={this.props.description}
                     />
                   </IceFormBinder>
                   <IceFormError name="description" />
@@ -220,7 +208,7 @@ export default class AddApiGroupFormDialog extends Component {
         <Row>
           <Col xxs={24} s={4} offset={20}>
             <Button type="primary" size="small" onClick={this.showDialog}>
-              创建分组
+              修改分组
             </Button>
           </Col>
         </Row>

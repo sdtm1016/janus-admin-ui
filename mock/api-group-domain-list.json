@@ -1,0 +1,18 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "total": 1,
+    "pageSize": 1,
+    "currentPage": 1,
+    "list": [
+      {
+        "id": 1,
+        "name":"测试环境",
+        "decription":"测试环境的域名",
+        "domain":"test.clsaa.com",
+        "ctime": 0,
+        "mtime": 0
+      }
+    ]
+  }
+}

@@ -29,25 +29,15 @@ import ServiceAuthList from './pages/ServiceAuthList';
 import IpStrategyList from './pages/IpStrategyList';
 
 import AppList from './pages/AppList';
+
+import ApiGroupDetail from './pages/ApiGroupDetail';
 import Login from './pages/Login';
 
 const routerConfig = [
   {
-    path: '/post',
+    path: '/api/index',
     layout: HeaderAsideFooterResponsiveLayout,
-    component: PostList,
-    children: [
-      {
-        path: 'list',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: PostList,
-      },
-      {
-        path: 'create',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: CreatePost,
-      },
-    ],
+    component: ApiList,
   },
   {
     path: '/',
@@ -133,14 +123,26 @@ const routerConfig = [
     ],
   },
   {
+    path: '/post',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: PostList,
+    children: [
+      {
+        path: 'list',
+        layout: HeaderAsideFooterResponsiveLayout,
+        component: PostList,
+      },
+      {
+        path: 'create',
+        layout: HeaderAsideFooterResponsiveLayout,
+        component: CreatePost,
+      },
+    ],
+  },
+  {
     path: '/group/index',
     layout: HeaderAsideFooterResponsiveLayout,
     component: ApiGroupList,
-  },
-  {
-    path: '/api/index',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: ApiList,
   },
   {
     path: '/traffic/index',
@@ -161,6 +163,11 @@ const routerConfig = [
     path: '/app/index',
     layout: HeaderAsideFooterResponsiveLayout,
     component: AppList,
+  },
+  {
+    path: '/group/:groupId',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: ApiGroupDetail,
   },
   {
     path: '*',

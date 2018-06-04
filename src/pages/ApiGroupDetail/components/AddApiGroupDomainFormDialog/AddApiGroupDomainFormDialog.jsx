@@ -15,17 +15,14 @@ const { Row, Col } = Grid;
 
 
 const defaultValue = {
-  regionId: 'cn-beijing',
-  regionName: '北京',
   name: '',
   description: '',
-  subDomain: '',
-  trafficLimit: 500,
+  domain: '',
 };
 
-export default class AddApiGroupFormDialog extends Component {
+export default class AddApiGroupDomainFormDialog extends Component {
 
-  static displayName = 'AddApiGroupFormDialog';
+  static displayName = 'AddApiGroupDomainFormDialog';
 
   constructor(props) {
     super(props);
@@ -111,7 +108,7 @@ export default class AddApiGroupFormDialog extends Component {
           style={simpleFormDialog}
           autoFocus={false}
           footerAlign="center"
-          title="创建分组"
+          title="添加域名"
           {...this.props}
           onOk={this.onOk}
           onCancel={this.hideDialog}
@@ -129,15 +126,7 @@ export default class AddApiGroupFormDialog extends Component {
             <div style={styles.dialogContent}>
               <Row style={styles.formRow}>
                 <Col span={`${isMobile ? '6' : '3'}`}>
-                  <label style={styles.formLabel}>分组地域</label>
-                </Col>
-                <Col span={`${isMobile ? '18' : '6'}`}>
-                  <label style={styles.formLabel}>{this.state.value.regionName}({this.state.value.regionId})</label>
-                </Col>
-              </Row>
-              <Row style={styles.formRow}>
-                <Col span={`${isMobile ? '6' : '3'}`}>
-                  <label style={styles.formLabel}>分组名称</label>
+                  <label style={styles.formLabel}>名称</label>
                 </Col>
                 <Col span={`${isMobile ? '18' : '16'}`}>
                   <IceFormBinder
@@ -157,42 +146,22 @@ export default class AddApiGroupFormDialog extends Component {
               </Row>
               <Row style={styles.formRow}>
                 <Col span={`${isMobile ? '6' : '3'}`}>
-                  <label style={styles.formLabel}>子域地址</label>
+                  <label style={styles.formLabel}>域名</label>
                 </Col>
                 <Col span={`${isMobile ? '18' : '16'}`}>
                   <IceFormBinder
                     required
                     min={5}
                     max={255}
-                    message="子域地址非法"
+                    message="域名非法"
                   >
                     <Input
-                      name="subDomain"
+                      name="domain"
                       style={styles.input}
-                      placeholder="请输入子域地址"
+                      placeholder="请输入域名"
                     />
                   </IceFormBinder>
                   <IceFormError name="subDomain" />
-                </Col>
-              </Row>
-              <Row style={styles.formRow}>
-                <Col span={`${isMobile ? '6' : '3'}`}>
-                  <label style={styles.formLabel}>QPS</label>
-                </Col>
-                <Col span={`${isMobile ? '18' : '16'}`}>
-                  <IceFormBinder
-                    required
-                    min={1}
-                    max={3}
-                    message="流量限制非法,需为1-1000"
-                  >
-                    <Input
-                      name="trafficLimit"
-                      style={styles.input}
-                      placeholder="请输入流量限制"
-                    />
-                  </IceFormBinder>
-                  <IceFormError name="trafficLimit" />
                 </Col>
               </Row>
               <Row style={styles.formRow}>
@@ -220,7 +189,7 @@ export default class AddApiGroupFormDialog extends Component {
         <Row>
           <Col xxs={24} s={4} offset={20}>
             <Button type="primary" size="small" onClick={this.showDialog}>
-              创建分组
+              添加域名
             </Button>
           </Col>
         </Row>

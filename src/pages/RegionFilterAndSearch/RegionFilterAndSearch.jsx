@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
 import { Grid, Search } from '@icedesign/base';
-import './FilterWithSearch.scss';
+import './RegionFilterAndSearch.scss';
 import emitter from "../../utils/events";
 
 const { Row, Col } = Grid;
@@ -13,8 +13,8 @@ const defaultValue = {
 
 
 
-export default class FilterWithSearch extends Component {
-  static displayName = 'FilterWithSearch';
+export default class RegionFilterAndSearch extends Component {
+  static displayName = 'RegionFilterAndSearch';
 
   static propTypes = {};
 

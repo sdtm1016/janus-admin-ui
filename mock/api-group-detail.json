@@ -1,0 +1,12 @@
+{
+    "regionId":"cn-beijing",
+    "regionName": "北京",
+    "id": "1",
+    "name": "测试接口",
+    "description": "这是一段描述1这是一段描述1这是一段描述1这是一段描述1这是一段描述1这是一段描述1这是一段描述1这是一段描述1这是一段描述1这是一段描述1这是一段描述1",
+    "subDomain": "open.clsaa.com",
+    "trafficLimit": 1000,
+    "ctime": 306,
+    "mtime": 117,
+    "status": 1
+}
