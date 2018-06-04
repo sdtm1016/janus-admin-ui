@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterWithSearch from './components/FilterWithSearch';
+import RegionFilterAndSearch from '../RegionFilterAndSearch';
 import FilterTable from './components/FilterTable';
 
 export default class ApiList extends Component {
@@ -13,7 +13,7 @@ export default class ApiList extends Component {
   render() {
     return (
       <div className="api-list-page">
-        <FilterWithSearch />
+        <RegionFilterAndSearch />
         <FilterTable />
       </div>
     );

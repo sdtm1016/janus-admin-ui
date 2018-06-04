@@ -5,17 +5,6 @@
 import HeaderAsideFooterResponsiveLayout from './layouts/HeaderAsideFooterResponsiveLayout';
 import BlankLayout from './layouts/BlankLayout';
 import Dashboard from './pages/Dashboard';
-import PostList from './pages/PostList';
-import CreatePost from './pages/CreatePost';
-import CateList from './pages/CateList';
-import CreateCate from './pages/CreateCate';
-import TagList from './pages/TagList';
-import CreateTag from './pages/CreateTag';
-import UserList from './pages/UserList';
-import CreateUser from './pages/CreateUser';
-import EditPassword from './pages/EditPassword';
-import BasicSetting from './pages/BasicSetting';
-import NavigationSetting from './pages/NavigationSetting';
 import NotFound from './pages/NotFound';
 
 import ApiGroupList from './pages/ApiGroupList';
@@ -45,99 +34,9 @@ const routerConfig = [
     component: Dashboard,
   },
   {
-    path: '/setting',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: BasicSetting,
-    children: [
-      {
-        path: '/basic',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: BasicSetting,
-      },
-      {
-        path: '/navigation',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: NavigationSetting,
-      },
-    ],
-  },
-  {
-    path: '/user',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: UserList,
-    children: [
-      {
-        path: 'list',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: UserList,
-      },
-      {
-        path: 'create',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: CreateUser,
-      },
-      {
-        path: 'pwd',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: EditPassword,
-      },
-    ],
-  },
-  {
-    path: '/tag',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: TagList,
-    children: [
-      {
-        path: 'list',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: TagList,
-      },
-      {
-        path: 'create',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: CreateTag,
-      },
-    ],
-  },
-  {
     path: '/login',
     layout: BlankLayout,
     component: Login,
-  },
-  {
-    path: '/cate',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: CateList,
-    children: [
-      {
-        path: 'list',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: CateList,
-      },
-      {
-        path: 'create',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: CreateCate,
-      },
-    ],
-  },
-  {
-    path: '/post',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: PostList,
-    children: [
-      {
-        path: 'list',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: PostList,
-      },
-      {
-        path: 'create',
-        layout: HeaderAsideFooterResponsiveLayout,
-        component: CreatePost,
-      },
-    ],
   },
   {
     path: '/group/index',

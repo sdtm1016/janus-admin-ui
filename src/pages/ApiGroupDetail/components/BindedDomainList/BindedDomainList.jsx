@@ -118,7 +118,6 @@ export default class BindedDomainList extends Component {
   };
 
   formatCtime = (value, index, record) => {
-    console.log(value);
     return new Date(value).toLocaleString();
   }
 

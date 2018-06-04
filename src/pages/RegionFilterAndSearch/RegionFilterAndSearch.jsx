@@ -82,7 +82,7 @@ export default class RegionFilterAndSearch extends Component {
                 inputWidth={150}
                 searchText=""
                 size="large"
-                placeholder="请输入API分组名称"
+                placeholder="请输入名称"
                 onSearch={this.handleSearch}
                 style={{ display: 'inline-block' }}
               />

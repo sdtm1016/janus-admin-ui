@@ -84,7 +84,7 @@ export default class ApiGroupTable extends Component {
         >
           API管理
         </a>
-        <a href="#" style={styles.operation} target="_blank">
+        <a href={"#/group/" + record.id} style={styles.operation}>
           查看详情
         </a>
         <a href="#" style={styles.operation} target="_blank">

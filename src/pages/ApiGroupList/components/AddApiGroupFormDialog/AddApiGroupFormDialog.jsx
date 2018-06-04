@@ -90,7 +90,8 @@ export default class AddApiGroupFormDialog extends Component {
 
   // 组件销毁前移除事件监听
   componentWillUnmount() {
-    emitter.removeListener(this.eventEmitter);
+    emitter.removeListener(this.eventEmitter, () => {
+    });
   };
 
 

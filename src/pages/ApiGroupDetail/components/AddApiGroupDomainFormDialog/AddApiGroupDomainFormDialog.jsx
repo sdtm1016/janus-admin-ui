@@ -85,12 +85,6 @@ export default class AddApiGroupDomainFormDialog extends Component {
     });
   };
 
-  // 组件销毁前移除事件监听
-  componentWillUnmount() {
-    emitter.removeListener(this.eventEmitter);
-  };
-
-
   render() {
     const { isMobile } = this.state;
     const simpleFormDialog = {

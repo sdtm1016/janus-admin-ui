@@ -37,7 +37,6 @@ export default class ReviewOverview extends Component {
       this.setState({
         value: result.data
       })
-      console.log(this.state.value);
     });
   };
 
