@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FilterWithSearch from './components/FilterWithSearch';
-import SimpleTable from './components/SimpleTable';
+import RegionFilterAndSearch from '../RegionFilterAndSearch';
+import ServiceAuthTable from './components/ServiceAuthTable';
 
 export default class ServiceAuthList extends Component {
   static displayName = 'ServiceAuthList';
@@ -13,8 +13,8 @@ export default class ServiceAuthList extends Component {
   render() {
     return (
       <div className="service-auth-list-page">
-        <FilterWithSearch />
-        <SimpleTable />
+        <RegionFilterAndSearch />
+        <ServiceAuthTable />
       </div>
     );
   }

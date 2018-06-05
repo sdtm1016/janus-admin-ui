@@ -1,0 +1,50 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "total": 5,
+    "pageSize": 10,
+    "currentPage": 1,
+    "list": [
+      {
+        "id": 1,
+        "name": "限流策略1",
+        "unit": "分钟",
+        "apiLimit": 5000,
+        "appLimit": 300,
+        "description": "限流策略1用于测试"
+      },
+      {
+        "id": 2,
+        "name": "限流策略5",
+        "unit": "分钟",
+        "apiLimit": 5000,
+        "appLimit": 300,
+        "description": "限流策略5用于测试"
+      },
+      {
+        "id": 3,
+        "name": "限流策略5",
+        "unit": "分钟",
+        "apiLimit": 5000,
+        "appLimit": 300,
+        "description": "限流策略5用于测试"
+      },
+      {
+        "id": 4,
+        "name": "限流策略5",
+        "unit": "分钟",
+        "apiLimit": 5000,
+        "appLimit": 300,
+        "description": "限流策略5用于测试"
+      },
+      {
+        "id": 5,
+        "name": "限流策略5",
+        "unit": "分钟",
+        "apiLimit": 5000,
+        "appLimit": 300,
+        "description": "限流策略5用于测试"
+      }
+    ]
+  }
+}

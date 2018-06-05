@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import StatisticalCard from './components/StatisticalCard';
-
-import DataStatistics from './components/DataStatistics';
 
 import RealTimeStatistics from './components/RealTimeStatistics';
-
-import LatestNews from './components/LatestNews';
+import YestodayDisplayCard from './components/YestodayDisplayCard';
+import GatewayTotalData from './components/GatewayTotalData';
+import Filter from './components/Filter';
+import RequestCountStatistics from './components/RequestCountStatistics';
+import { Grid } from '@icedesign/base';
 
 import './Dashboard.scss';
-
+const { Row, Col } = Grid;
 export default class Dashboard extends Component {
   static displayName = 'Dashboard';
 
@@ -21,13 +21,16 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard-page">
-        <StatisticalCard />
-
-        <DataStatistics />
-
+        <GatewayTotalData />
         <RealTimeStatistics />
+        <YestodayDisplayCard />
+        <Filter />
+        <Row>
+          <Col span={24}>
+            <RequestCountStatistics />
+          </Col>
+        </Row>
 
-        <LatestNews />
       </div>
     );
   }

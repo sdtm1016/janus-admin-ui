@@ -21,14 +21,14 @@ export default class RealTimeStatistics extends Component {
         <Col xxs="24" s="12" l="6">
           <div style={{ ...styles.itemBody, ...styles.green }}>
             <div style={styles.itemTitle}>
-              <p style={styles.titleText}>分类统计</p>
+              <p style={styles.titleText}>QPS</p>
               <span style={styles.tag}>实时</span>
             </div>
             <div style={styles.itemContent}>
-              <h2 style={styles.itemNum}>7,993</h2>
+              <h2 style={styles.itemNum}>7751</h2>
               <div style={styles.itemMeta}>
-                <p style={styles.total}>7,993</p>
-                <p style={styles.desc}>当前分类总记录数</p>
+                <p style={styles.total}>最大：627/节点</p>
+                <p style={styles.desc}>结点数：15，统计粒度：分钟</p>
               </div>
             </div>
           </div>
@@ -36,14 +36,14 @@ export default class RealTimeStatistics extends Component {
         <Col xxs="24" s="12" l="6">
           <div style={{ ...styles.itemBody, ...styles.lightBlue }}>
             <div style={styles.itemTitle}>
-              <p style={styles.titleText}>附件统计</p>
+              <p style={styles.titleText}>外网出流量</p>
               <span style={styles.tag}>实时</span>
             </div>
             <div style={styles.itemContent}>
-              <h2 style={styles.itemNum}>3,112</h2>
+              <h2 style={styles.itemNum}>178Mbps</h2>
               <div style={styles.itemMeta}>
-                <p style={styles.total}>3,112</p>
-                <p style={styles.desc}>当前上传的附件数</p>
+                <p style={styles.total}>最大：13Mbps/节点</p>
+                <p style={styles.desc}>结点数：15，统计粒度：分钟</p>
               </div>
             </div>
           </div>
@@ -51,35 +51,29 @@ export default class RealTimeStatistics extends Component {
         <Col xxs="24" s="12" l="6">
           <div style={{ ...styles.itemBody, ...styles.darkBlue }}>
             <div style={styles.itemTitle}>
-              <p style={styles.titleText}>文章统计</p>
+              <p style={styles.titleText}>响应时间</p>
               <span style={styles.tag}>实时</span>
             </div>
-            <div style={styles.itemRow}>
-              <div style={styles.itemCol}>
-                <h2 style={styles.itemNum}>908</h2>
-                <p style={styles.desc}>评论次数</p>
-              </div>
-              <div style={styles.itemCol}>
-                <h2 style={styles.itemNum}>263</h2>
-                <p style={styles.desc}>点赞次数</p>
+            <div style={styles.itemContent}>
+              <h2 style={styles.itemNum}>970ms</h2>
+              <div style={styles.itemMeta}>
+                <p style={styles.total}>95%响应时间：690ms，</p>
+                <p style={styles.desc}>结点数：15，统计粒度：分钟</p>
               </div>
             </div>
           </div>
         </Col>
         <Col xxs="24" s="12" l="6">
-          <div style={{ ...styles.itemBody, ...styles.navyBlue }}>
+          <div style={{ ...styles.itemBody, ...styles.darkBlue }}>
             <div style={styles.itemTitle}>
-              <p style={styles.titleText}>新闻统计</p>
+              <p style={styles.titleText}>错误数</p>
               <span style={styles.tag}>实时</span>
             </div>
-            <div style={styles.itemRow}>
-              <div style={styles.itemCol}>
-                <h2 style={styles.itemNum}>908</h2>
-                <p style={styles.desc}>评论次数</p>
-              </div>
-              <div style={styles.itemCol}>
-                <h2 style={styles.itemNum}>263</h2>
-                <p style={styles.desc}>点赞次数</p>
+            <div style={styles.itemContent}>
+              <h2 style={styles.itemNum}>1389</h2>
+              <div style={styles.itemMeta}>
+                <p style={styles.total}>前端错误：175，后端错误数：1214</p>
+                <p style={styles.desc}>结点数：15，统计粒度：分钟</p>
               </div>
             </div>
           </div>

@@ -1,0 +1,28 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "total": 3,
+    "pageSize": 10,
+    "currentPage": 1,
+    "list": [
+      {
+        "id": 1,
+        "name": "IP控制策略1-白名单",
+        "type": "白名单",
+        "description": "IP控制策略1-白名单"
+      },
+      {
+        "id": 2,
+        "name": "IP控制策略2-黑名单",
+        "type": "黑名单",
+        "description": "IP控制策略2-黑名单"
+      },
+      {
+        "id": 3,
+        "name": "IP控制策略3-白名单",
+        "type": "白名单",
+        "description": "IP控制策略3-白名单"
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FilterWithSearch from './components/FilterWithSearch';
-import SimpleTable from './components/SimpleTable';
+import RegionFilterAndSearch from '../RegionFilterAndSearch';
+import TrafficLimitTable from './components/TrafficLimitTable';
 
 export default class TrafficLimitList extends Component {
   static displayName = 'TrafficLimitList';
@@ -13,8 +13,8 @@ export default class TrafficLimitList extends Component {
   render() {
     return (
       <div className="traffic-limit-list-page">
-        <FilterWithSearch />
-        <SimpleTable />
+        <RegionFilterAndSearch />
+        <TrafficLimitTable />
       </div>
     );
   }

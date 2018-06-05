@@ -1,0 +1,24 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "total": 2,
+    "pageSize": 10,
+    "currentPage": 1,
+    "list": [
+      {
+        "id": 1,
+        "name": "应用1",
+        "accessKey": "3t43t9ut034302rr0ew9rw0",
+        "accessSecret": "2l******e0",
+        "description": "这是应用1"
+      },
+      {
+        "id": 2,
+        "name": "应用2",
+        "accessKey": "vmcffwe902i10jfdso3gre",
+        "accessSecret": "z3******s0",
+        "description": "这是应用1"
+      }
+    ]
+  }
+}

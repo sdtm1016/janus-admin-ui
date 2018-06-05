@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import FilterWithSearch from './components/FilterWithSearch';
-import SimpleTable from './components/SimpleTable';
+import AppTable from './components/AppTable';
 
 export default class AppList extends Component {
   static displayName = 'AppList';
@@ -13,8 +12,7 @@ export default class AppList extends Component {
   render() {
     return (
       <div className="app-list-page">
-        <FilterWithSearch />
-        <SimpleTable />
+        <AppTable />
       </div>
     );
   }

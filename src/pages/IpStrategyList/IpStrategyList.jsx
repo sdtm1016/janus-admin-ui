@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FilterWithSearch from './components/FilterWithSearch';
-import SimpleTable from './components/SimpleTable';
+import RegionFilterAndSearch from '../RegionFilterAndSearch';
+import IpStrategyTable from './components/IpStrategyTable';
 
 export default class IpStrategyList extends Component {
   static displayName = 'IpStrategyList';
@@ -13,8 +13,8 @@ export default class IpStrategyList extends Component {
   render() {
     return (
       <div className="ip-strategy-list-page">
-        <FilterWithSearch />
-        <SimpleTable />
+        <RegionFilterAndSearch />
+        <IpStrategyTable />
       </div>
     );
   }
