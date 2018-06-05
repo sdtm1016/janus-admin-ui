@@ -1,0 +1,19 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "total": 2,
+    "pageSize": 2,
+    "currentPage": 1,
+    "list": [
+      {
+        "id": 1,
+        "name": "API名称"
+      },
+      {
+        "id": 2,
+        "name": "API名称2",
+        "description": "API描述"
+      }
+    ]
+  }
+}

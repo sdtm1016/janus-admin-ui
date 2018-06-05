@@ -15,6 +15,7 @@
     "@icedesign/layout": "^0.1.0",
     "@icedesign/menu": "^0.1.0",
     "@icedesign/skin": "^0.1.0",
+    "antd": "^3.6.1",
     "axios": "^0.17.1",
     "bizcharts": "3.1.0",
     "classnames": "^2.2.5",

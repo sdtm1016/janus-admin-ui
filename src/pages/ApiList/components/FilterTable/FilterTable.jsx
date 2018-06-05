@@ -5,11 +5,18 @@ import IceContainer from '@icedesign/container';
 import DataBinder from '@icedesign/data-binder';
 import IceLabel from '@icedesign/label';
 import FilterForm from './Filter';
+import ApiOnlineFormDialog from '../ApiOnlineFormDialog';
+import ApiAuthFormDialog from '../ApiAuthFormDialog';
+import ApiOfflineFormDialog from '../ApiOfflineFormDialog';
+import { Dialog, Grid, Input, Radio, Button } from '@icedesign/base';
+import './index.css'
+
+const { Row, Col } = Grid;
 
 @DataBinder({
   tableData: {
     // 详细请求配置请参见 https://github.com/axios/axios
-    url: '/mock/filter-table-list.json',
+    url: '/mock/api-list.json',
     params: {
       page: 1,
     },
@@ -47,14 +54,6 @@ export default class EnhanceTable extends Component {
     });
   };
 
-  renderTitle = (value, index, record) => {
-    return (
-      <div style={styles.titleWrapper}>
-        <span style={styles.title}>{record.title}</span>
-      </div>
-    );
-  };
-
   editItem = (record, e) => {
     e.preventDefault();
     // TODO: record 为该行所对应的数据，可自定义操作行为
@@ -64,31 +63,47 @@ export default class EnhanceTable extends Component {
     return (
       <div
         className="filter-table-operation"
-        style={styles.filterTableOperation}
       >
-        <a
-          href="#"
-          style={styles.operationItem}
-          target="_blank"
-          onClick={this.editItem.bind(this, record)}
-        >
-          解决
-        </a>
-        <a href="#" style={styles.operationItem} target="_blank">
-          详情
-        </a>
-        <a href="#" style={styles.operationItem} target="_blank">
-          分类
-        </a>
+        <div className="operations">
+          <Row>
+            <Col span={4} style={styles.operationItem}>
+              <a href="#" target="_blank">
+                管理
+              </a>
+            </Col>
+            <Col span={4} style={styles.operationItem}>
+              <ApiOnlineFormDialog apiId={record.id} apiName={record.name} />
+            </Col>
+            <Col span={4} style={styles.operationItem}>
+              <ApiOfflineFormDialog apiId={record.id} apiName={record.name} />
+            </Col>
+            <Col span={4} style={styles.operationItem}>
+              <ApiAuthFormDialog apiId={record.id} apiName={record.name} />
+            </Col>
+            <Col span={4} style={styles.operationItem}>
+              <a href="#" target="_blank">
+                删除
+              </a>
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   };
 
-  renderStatus = (value) => {
+  renderStatus = (value, index, record) => {
     return (
-      <IceLabel inverse={false} status="default">
-        {value}
-      </IceLabel>
+      <div>
+        <div align='right'>
+          测试：<IceLabel inverse={false} status={record.deployInfo.TEST == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.TEST == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
+        </div>
+        <div align='right'>
+          预发布：<IceLabel inverse={false} status={record.deployInfo.PRE == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.PRE == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
+        </div>
+        <div align='right'>
+          线上：<IceLabel inverse={false} status={record.deployInfo.ONLINE == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.ONLINE == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
+        </div>
+      </div>
     );
   };
 
@@ -119,13 +134,17 @@ export default class EnhanceTable extends Component {
     });
   };
 
+  formatTableTime = (value, index, record) => {
+    return new Date(value).toLocaleString();
+  }
+
   render() {
     const tableData = this.props.bindingData.tableData;
     const { filterFormValue } = this.state;
 
     return (
       <div className="filter-table">
-        <IceContainer title="内容筛选">
+        <IceContainer title="筛选条件">
           <FilterForm
             value={filterFormValue}
             onChange={this.filterFormChange}
@@ -141,27 +160,26 @@ export default class EnhanceTable extends Component {
             style={styles.basicTable}
             hasBorder={false}
           >
+
+            <Table.Column title="名称" dataIndex="name" width={85} />
+            <Table.Column title="分类" dataIndex="type" width={85} />
+            <Table.Column title="分组" dataIndex="groupName" width={85} />
+            <Table.Column title="描述" dataIndex="description" width={140} />
             <Table.Column
-              title="问题描述"
-              cell={this.renderTitle}
-              width={320}
-            />
-            <Table.Column title="问题分类" dataIndex="type" width={85} />
-            <Table.Column
-              title="发布时间"
-              dataIndex="publishTime"
+              title="修改时间"
+              dataIndex="mtime"
+              cell={this.formatTableTime}
               width={150}
             />
             <Table.Column
               title="状态"
-              dataIndex="publishStatus"
-              width={85}
               cell={this.renderStatus}
+              width={135}
             />
             <Table.Column
               title="操作"
               dataIndex="operation"
-              width={150}
+              width={180}
               cell={this.renderOperations}
             />
           </Table>
@@ -184,7 +202,7 @@ const styles = {
     lineHeight: '28px',
   },
   operationItem: {
-    marginRight: '12px',
+    marginRight: '7px',
     textDecoration: 'none',
     color: '#5485F7',
   },

@@ -1,0 +1,49 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "total": 100,
+    "pageSize": 10,
+    "currentPage": 1,
+    "list": [
+      {
+        "id": 1,
+        "name": "API名称",
+        "type": "公开",
+        "groupName": "API分组",
+        "description": "API描述",
+        "mtime": 1528131917000,
+        "deployInfo": {
+          "TEST": "DEPLOYED",
+          "PRE": "DEPLOYED",
+          "ONLINE": "NONDEPLOYED"
+        }
+      },
+      {
+        "id": 2,
+        "name": "API名称2",
+        "type": "公开",
+        "groupName": "API分组",
+        "description": "API描述",
+        "mtime": 1528131917000,
+        "deployInfo": {
+          "TEST": "DEPLOYED",
+          "PRE": "DEPLOYED",
+          "ONLINE": "NONDEPLOYED"
+        }
+      },
+      {
+        "id": 3,
+        "name": "API名称3",
+        "type": "公开",
+        "groupName": "API分组",
+        "description": "API描述",
+        "mtime": 1528131917000,
+        "deployInfo": {
+          "TEST": "DEPLOYED",
+          "PRE": "DEPLOYED",
+          "ONLINE": "NONDEPLOYED"
+        }
+      }
+    ]
+  }
+}

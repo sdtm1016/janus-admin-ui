@@ -20,18 +20,19 @@ import IpStrategyList from './pages/IpStrategyList';
 import AppList from './pages/AppList';
 
 import ApiGroupDetail from './pages/ApiGroupDetail';
+
 import Login from './pages/Login';
 
 const routerConfig = [
   {
-    path: '/api/index',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: ApiList,
-  },
-  {
     path: '/',
     layout: HeaderAsideFooterResponsiveLayout,
     component: Dashboard,
+  },
+  {
+    path: '/auth/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: ServiceAuthList,
   },
   {
     path: '/login',
@@ -49,9 +50,9 @@ const routerConfig = [
     component: TrafficLimitList,
   },
   {
-    path: '/auth/index',
+    path: '/api/index',
     layout: HeaderAsideFooterResponsiveLayout,
-    component: ServiceAuthList,
+    component: ApiList,
   },
   {
     path: '/IPStrategy/index',
