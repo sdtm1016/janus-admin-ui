@@ -40,7 +40,7 @@ export default class Filter extends Component {
                   style={styles.filterTool}
                 >
                   <Option value="ALL">全部</Option>
-                  <Option value="test_api_group01">test_api_group01</Option>
+                  <Option value="test_api_group01">用于测试的API分组</Option>
                   <Option value="test_api_group02">test_api_group03</Option>
                   <Option value="test_api_group03">test_api_group04</Option>
                 </Select>

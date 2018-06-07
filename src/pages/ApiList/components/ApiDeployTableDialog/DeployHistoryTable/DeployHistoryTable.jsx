@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { Table, Pagination, Button, Dialog, Grid, Input, Search, Select } from '@icedesign/base'
+import { Table, Pagination, Button, Dialog, Grid, Input, Search } from '@icedesign/base'
 import IceContainer from '@icedesign/container';
 import IceImg from '@icedesign/img';
 import DataBinder from '@icedesign/data-binder';
 import IceLabel from '@icedesign/label';
-// form binder 详细用法请参见官方文档
-import { FormBinder as IceFormBinder, FormBinderWrapper as IceFormBinderWrapper } from '@icedesign/form-binder';
+
 import { enquireScreen } from 'enquire-js';
+import SwichApiVersionFormDialog from '../../SwichApiVersionFormDialog'
 
 const { Row, Col } = Grid;
-const { Option } = Select;
-
 
 @DataBinder({
   tableData: {
     // 详细请求配置请参见 https://github.com/axios/axios
-    url: '/mock/bind-api-list.json',
+    url: '/mock/api-deploy-history-list.json',
     params: {
       page: 1,
     },
@@ -27,8 +25,8 @@ const { Option } = Select;
     },
   },
 })
-export default class ApiList extends Component {
-  static displayName = 'ApiList';
+export default class DeployHistoryTable extends Component {
+  static displayName = 'DeployHistoryTable';
 
   static propTypes = {};
 
@@ -66,6 +64,28 @@ export default class ApiList extends Component {
     });
   };
 
+  renderTitle = (value, index, record) => {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+        }}
+      >
+        <div>
+          <IceImg src={record.cover} width={48} height={48} />
+        </div>
+        <span
+          style={{
+            marginLeft: '10px',
+            lineHeight: '20px',
+          }}
+        >
+          {record.title}
+        </span>
+      </div>
+    );
+  };
 
   editItem = (record, e) => {
     e.preventDefault();
@@ -73,11 +93,44 @@ export default class ApiList extends Component {
   };
 
   renderOperations = (value, index, record) => {
-    return (
-      <Button type="primary" size="small">
-        绑定
-      </Button>
-    );
+    console.log(record.status);
+    if (record.status == 'NONDEPLOYED') {
+      return (
+        <div
+          className="filter-table-operation"
+        >
+          <div className="operations">
+            <Row>
+              <Col span={4} style={styles.operationItem}>
+                <a href="#" target="_blank">
+                  查看
+          </a>
+              </Col>
+              <Col span={12} style={styles.operationItem}>
+                <SwichApiVersionFormDialog apiName={this.props.apiName} apiId={this.props.apiId}/>
+              </Col>
+            </Row>
+          </div>
+        </div>
+
+      );
+    } else {
+      return (
+        <div
+          className="filter-table-operation"
+        >
+          <div className="operations">
+            <Row>
+              <Col span={4} style={styles.operationItem}>
+                <a href="#" target="_blank">
+                  查看
+          </a>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      );
+    }
   };
 
   renderStatus = (value) => {
@@ -104,49 +157,35 @@ export default class ApiList extends Component {
     return (
       <div className="simple-table">
         <IceContainer>
-          <Row wrap>
-            <Col xxs={24} xs={8} l={4} style={styles.filterCol}>
-              <label style={styles.formLabel}>未绑定的API：</label>
+          <Row style={styles.formRow} gutter={24}>
+            <Col span={6}>
+              <label style={styles.formLabel}>输入版本号：</label>
             </Col>
-            <Col xxs={24} xs={12} l={10} style={styles.filterCol}>
-              <label style={styles.filterTitle}>API分组</label>
-              <IceFormBinder>
-                <Select
-                  name="groupId"
-                  placeholder="请选择"
-                  style={styles.filterTool}
-                >
-                  <Option value="1">test</Option>
-                  <Option value="2">test2</Option>
-                  <Option value="3">test3</Option>
-                </Select>
-              </IceFormBinder>
-            </Col>
-            <Col xxs={24} xs={12} l={10} style={styles.filterCol}>
+            <Col span={12} offset={6}>
               <Search
-                inputWidth={100}
+                inputWidth={150}
                 searchText=""
                 size="large"
-                placeholder="请输入名称"
+                placeholder="请输入版本号"
                 onSearch={this.handleSearch}
                 style={{ display: 'inline-block' }}
               />
             </Col>
           </Row>
-
           <Table
             dataSource={tableData.list}
             isLoading={tableData.__loading} // eslint-disable-line
             className="basic-table"
             hasBorder={false}
           >
-            <Table.Column title="ID" dataIndex="id" width={80} />
-            <Table.Column title="名称" dataIndex="name" width={80} />
-            <Table.Column title="已绑规则" dataIndex="ruleName" width={80} />
+            <Table.Column title="版本" dataIndex="version" width={90} />
+            <Table.Column title="环境" dataIndex="environment" width={80} />
+            <Table.Column title="发布时间" dataIndex="ctime" width={150} cell={this.formatCtime} />
+            <Table.Column title="描述" dataIndex="description" width={150} />
             <Table.Column
               title="操作"
               dataIndex="operation"
-              width={120}
+              width={210}
               cell={this.renderOperations}
             />
           </Table>
@@ -177,20 +216,9 @@ const styles = {
   formRow: { marginTop: 20 },
   input: { width: '100%' },
   formLabel: { lineHeight: '26px' },
-  filterCol: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '20px',
-  },
-
-  filterTitle: {
-    width: '68px',
-    textAlign: 'right',
-    marginRight: '12px',
-    fontSize: '14px',
-  },
-
-  filterTool: {
-    width: '200px',
+  operationItem: {
+    marginRight: '7px',
+    textDecoration: 'none',
+    color: '#5485F7',
   },
 };

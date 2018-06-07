@@ -7,24 +7,17 @@
     "list": [
       {
         "id": 1,
-        "name": "密匙1",
+        "name": "订单平台签名密匙",
         "accessKey": "gf8dg8fyoinvdf10a0sd",
         "accessSecret": "gt*************k2",
-        "description": "这是XX密匙"
+        "description": "订单平台签名用于校验来源合法性的密匙"
       },
       {
         "id": 2,
-        "name": "密匙2",
+        "name": "支付网关签名密匙",
         "accessKey": "ifdsguaiujldsafjsa",
         "accessSecret": "yr*************yi",
-        "description": "这是XX密匙"
-      },
-      {
-        "id": 3,
-        "name": "密匙3",
-        "accessKey": "qwojr329jlsd0sdqw0wojsd",
-        "accessSecret": "0o*************6y",
-        "description": "这是XX密匙"
+        "description": "支付网关用于校验来源合法性的密匙"
       }
     ]
   }

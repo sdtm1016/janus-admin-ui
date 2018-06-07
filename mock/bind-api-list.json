@@ -31,20 +31,6 @@
           "PRE": "DEPLOYED",
           "ONLINE": "NONDEPLOYED"
         }
-      },
-      {
-        "id": "352bef9a5af843e3a79c0acc82a41927",
-        "name": "用于测试的API3",
-        "type": "公开",
-        "groupName": "用于测试的API分组",
-        "description": "用于测试的API3",
-        "mtime": 1528182203000,
-        "deployInfo": {
-          "TEST": "DEPLOYED",
-          "PRE": "NONDEPLOYED",
-          "ONLINE": "NONDEPLOYED"
-        },
-        "ruleName": "生产环境-普通业务限流"
       }
     ]
   }

@@ -1,0 +1,31 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "total": 3,
+    "pageSize": 10,
+    "currentPage": 1,
+    "list": [
+      {
+        "version":"20180606180657335",
+        "environment":"预发布",
+        "ctime":1528363147000,
+        "description":"将测试API发布到预发布环境",
+        "status":"DEPLOYED"
+      },
+      {
+        "version":"20180606180644522",
+        "environment":"测试",
+        "ctime":1528363244000,
+        "description":"将测试API发布到测试环境",
+        "status":"NONDEPLOYED"
+      },
+      {
+        "version":"20180606180715398",
+        "environment":"测试",
+        "ctime":1528365147000,
+        "description":"修改API后再次将API发布到测试环境",
+        "status":"DEPLOYED"
+      }
+    ]
+  }
+}

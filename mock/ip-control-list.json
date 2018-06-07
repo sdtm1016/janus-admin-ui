@@ -7,21 +7,40 @@
     "list": [
       {
         "id": 1,
-        "name": "IP控制策略1-白名单",
+        "name": "白名单-北京机房",
         "type": "白名单",
-        "description": "IP控制策略1-白名单"
+        "description": "北京机房全部IP段"
       },
       {
         "id": 2,
-        "name": "IP控制策略2-黑名单",
-        "type": "黑名单",
-        "description": "IP控制策略2-黑名单"
+        "name": "白名单-北京机房财务系统IP段",
+        "type": "白名单",
+        "description": "北京机房财务系统IP段"
       },
       {
         "id": 3,
-        "name": "IP控制策略3-白名单",
+        "name": "白名单-上海机房",
         "type": "白名单",
-        "description": "IP控制策略3-白名单"
+        "description": "上海机房全部IP段"
+      },
+      {
+        "id": 4,
+        "name": "白名单-香港机房",
+        "type": "白名单",
+        "description": "香港机房"
+      },
+      {
+        "id": 5,
+        "name": "白名单-百度推广IP",
+        "type": "白名单",
+        "description": "百度推广IP端，用于百度推广抓取信息"
+      }
+      ,
+      {
+        "id": 6,
+        "name": "黑名单-大数据部门反馈IP段",
+        "type": "黑名单",
+        "description": "大数据部门反馈IP段，有可能有攻击行为"
       }
     ]
   }

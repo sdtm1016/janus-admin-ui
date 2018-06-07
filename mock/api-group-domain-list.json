@@ -10,8 +10,8 @@
         "name":"测试环境",
         "decription":"测试环境的域名",
         "domain":"test.clsaa.com",
-        "ctime": 0,
-        "mtime": 0
+        "ctime": 1528186291000,
+        "mtime": 1528186291000
       }
     ]
   }

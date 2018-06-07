@@ -121,11 +121,11 @@ export default class ApiGroupTable extends Component {
               dataIndex="name"
               width={50}
             />
-            <Table.Column title="描述" dataIndex="description" width={180} />
+            <Table.Column title="描述" dataIndex="description" width={250} />
             <Table.Column
               title="创建时间"
               dataIndex="ctime"
-              width={150}
+              width={120}
               cell={this.formatCtime}
             />
             <Table.Column

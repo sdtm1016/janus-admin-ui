@@ -7,43 +7,35 @@
     "list": [
       {
         "id": 1,
-        "name": "限流策略1",
-        "unit": "分钟",
+        "name": "生产环境-普通业务限流",
+        "unit": "秒",
         "apiLimit": 5000,
-        "appLimit": 300,
-        "description": "限流策略1用于测试"
+        "appLimit": 1000,
+        "description": "生产环境用于普通业务限流策略"
       },
       {
         "id": 2,
-        "name": "限流策略5",
-        "unit": "分钟",
-        "apiLimit": 5000,
-        "appLimit": 300,
-        "description": "限流策略5用于测试"
+        "name": "生产环境-核心业务限流",
+        "unit": "秒",
+        "apiLimit": 15000,
+        "appLimit": 3000,
+        "description": "生产环境用于普通业务限流策略"
       },
       {
         "id": 3,
-        "name": "限流策略5",
-        "unit": "分钟",
-        "apiLimit": 5000,
-        "appLimit": 300,
-        "description": "限流策略5用于测试"
+        "name": "生产环境-内网业务限流",
+        "unit": "秒",
+        "apiLimit": 2000,
+        "appLimit": 200,
+        "description": "生产环境内网业务少量暴露在外网中限流"
       },
       {
         "id": 4,
-        "name": "限流策略5",
-        "unit": "分钟",
-        "apiLimit": 5000,
-        "appLimit": 300,
-        "description": "限流策略5用于测试"
-      },
-      {
-        "id": 5,
-        "name": "限流策略5",
-        "unit": "分钟",
-        "apiLimit": 5000,
-        "appLimit": 300,
-        "description": "限流策略5用于测试"
+        "name": "生产环境-订单业务限流",
+        "unit": "秒",
+        "apiLimit": 1000,
+        "appLimit": 100,
+        "description": "生产环境订单业务限流"
       }
     ]
   }

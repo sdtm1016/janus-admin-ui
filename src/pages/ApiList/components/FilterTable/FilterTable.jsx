@@ -8,6 +8,8 @@ import FilterForm from './Filter';
 import ApiOnlineFormDialog from '../ApiOnlineFormDialog';
 import ApiAuthFormDialog from '../ApiAuthFormDialog';
 import ApiOfflineFormDialog from '../ApiOfflineFormDialog';
+import SwichApiVersionFormDialog from '../SwichApiVersionFormDialog';
+import ApiDeployTableDialog from '../ApiDeployTableDialog';
 import { Dialog, Grid, Input, Radio, Button } from '@icedesign/base';
 import './index.css'
 
@@ -71,14 +73,17 @@ export default class EnhanceTable extends Component {
                 管理
               </a>
             </Col>
-            <Col span={4} style={styles.operationItem}>
+            <Col span={3} style={styles.operationItem}>
               <ApiOnlineFormDialog apiId={record.id} apiName={record.name} />
             </Col>
-            <Col span={4} style={styles.operationItem}>
+            <Col span={3} style={styles.operationItem}>
               <ApiOfflineFormDialog apiId={record.id} apiName={record.name} />
             </Col>
-            <Col span={4} style={styles.operationItem}>
+            <Col span={3} style={styles.operationItem}>
               <ApiAuthFormDialog apiId={record.id} apiName={record.name} />
+            </Col>
+            <Col span={6} style={styles.operationItem}>
+              <ApiDeployTableDialog apiId={record.id} apiName={record.name} />
             </Col>
             <Col span={4} style={styles.operationItem}>
               <a href="#" target="_blank">
@@ -174,12 +179,12 @@ export default class EnhanceTable extends Component {
             <Table.Column
               title="状态"
               cell={this.renderStatus}
-              width={135}
+              width={120}
             />
             <Table.Column
               title="操作"
               dataIndex="operation"
-              width={180}
+              width={260}
               cell={this.renderOperations}
             />
           </Table>
