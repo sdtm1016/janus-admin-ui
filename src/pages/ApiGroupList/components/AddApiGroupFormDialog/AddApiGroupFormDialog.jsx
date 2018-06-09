@@ -9,7 +9,8 @@ import {
 import { enquireScreen } from 'enquire-js';
 import RegionFilterAndSearch from '../../../RegionFilterAndSearch';
 import emitter from "../../../../utils/events";
-
+import { createHashHistory } from 'history'
+const history = createHashHistory()
 const { Row, Col } = Grid;
 
 
@@ -57,6 +58,7 @@ export default class AddApiGroupFormDialog extends Component {
   };
 
   hideDialog = () => {
+    this.props.par.fetchData(1);
     this.setState({
       visible: false,
     });

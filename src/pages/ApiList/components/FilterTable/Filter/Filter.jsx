@@ -6,13 +6,28 @@ import { FormBinder as IceFormBinder, FormBinderWrapper as IceFormBinderWrapper 
 const { Row, Col } = Grid;
 const { Option } = Select;
 
+const defaultValue = {
+  type: 'ALL',
+  groupId: 'test_api_group01',
+  environmentId: 'ALL',
+};
+
 export default class Filter extends Component {
   static displayName = 'Filter';
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      value: defaultValue,
+      isMobile: false,
+    };
+  }
 
   render() {
     return (
       <IceFormBinderWrapper
-        value={this.props.value}
+        value={this.state.value}
         onChange={this.props.onChange}
       >
         <div>

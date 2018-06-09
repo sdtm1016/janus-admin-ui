@@ -75,12 +75,8 @@ export default class ApiGroupTable extends Component {
     return (
       <div style={{ lineHeight: '28px' }}>
         <a
-          href="#"
+          href="/#/api/index"
           style={styles.operation}
-          target="_blank"
-          onClick={() => {
-            this.editItem(record);
-          }}
         >
           API管理
         </a>
@@ -109,7 +105,7 @@ export default class ApiGroupTable extends Component {
     return (
       <div className="simple-table">
         <IceContainer>
-          <AddApiGroupFormDialog />
+          <AddApiGroupFormDialog par={this} />
           <Table
             dataSource={tableData.list}
             isLoading={tableData.__loading} // eslint-disable-line

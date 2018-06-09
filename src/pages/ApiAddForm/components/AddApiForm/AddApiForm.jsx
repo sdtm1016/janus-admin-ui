@@ -30,14 +30,14 @@ export default class AddApiForm extends Component {
       formValue: {
         groupId: 'test',
         name: '',
-        authType: 'OAuth2.0',
+        authType: 'OAuth2',
         signMethod: 'HmacSHA256',
         type: '',
         description: '',
         protocol: '',
         requestPath: '',
         requestMethod: '',
-        requestMode: '',
+        requestMode: 'MAPPING',
         serviceType: '',
         serviceAddress: '',
         servicePath: '',
@@ -92,7 +92,7 @@ export default class AddApiForm extends Component {
             ref={(form) => {
               this.form = form;
             }}
-            value={initValue}
+            value={this.state.formValue}
             onChange={this.formChange}
           >
             <div>
@@ -101,7 +101,7 @@ export default class AddApiForm extends Component {
                   <span>分组：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <Select
                       name="groupId"
                       placeholder="请选择"
@@ -140,7 +140,7 @@ export default class AddApiForm extends Component {
                   <span>认证方式：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <Select
                       name="authType"
                       placeholder="请选择"
@@ -161,7 +161,7 @@ export default class AddApiForm extends Component {
                   <span>签名算法：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <Select
                       name="signMethod"
                       placeholder="请选择"
@@ -182,7 +182,7 @@ export default class AddApiForm extends Component {
                   描述：
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <Input
                       required
                       message="必填"
@@ -224,12 +224,10 @@ export default class AddApiForm extends Component {
                   <span>协议：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <Checkbox.Group name="protocol" style={{ width: '100%' }}>
-                      <Row>
-                        <Col span={4}><Checkbox value="HTTP">HTTP</Checkbox></Col>
-                        <Col span={4}><Checkbox value="HTTPS">HTTPS</Checkbox></Col>
-                      </Row>
+                      <Checkbox value="HTTP">HTTP</Checkbox>
+                      <Checkbox value="HTTPS">HTTPS</Checkbox>
                     </Checkbox.Group>
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
@@ -242,15 +240,13 @@ export default class AddApiForm extends Component {
                   <span>请求路径：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder required message="必填项">
-                    <Input
-                      name="requestPath"
-                      size="large"
-                      style={{ width: '100%' }}
-                    />
-                  </FormBinder>
+                  <Input
+                    name="requestPath"
+                    size="large"
+                    style={{ width: '100%' }}
+                  />
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="requestPath" />
+                    <FormError name="requestPath3" />
                   </div>
                 </Col>
               </Row>
@@ -260,7 +256,7 @@ export default class AddApiForm extends Component {
                   <span>HTTP方法：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <Select
                       name="requestMethod"
                       placeholder="请选择"
@@ -286,16 +282,15 @@ export default class AddApiForm extends Component {
                   <span>入参映射：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
-                    <Select
-                      name="requestMode"
-                      placeholder="请选择"
-                      style={styles.filterTool}
-                    >
-                      <Option value="DELETE">入参映射</Option>
-                      <Option value="HEAD">入参透传</Option>
-                    </Select>
-                  </FormBinder>
+
+                  <Select
+                    name="requestMode"
+                    placeholder="请选择"
+                    style={styles.filterTool}
+                  >
+                    <Option value="MAPPING">入参映射</Option>
+                    <Option value="CONVERT">入参透传</Option>
+                  </Select>
                   <div style={styles.formErrorWrapper}>
                     <FormError name="requestMode" />
                   </div>
@@ -309,7 +304,7 @@ export default class AddApiForm extends Component {
               </Row>
               <Row>
                 <Col offset={7}>
-                  <Button onClick={this.lastStep} type=" ">
+                  <Button onClick={this.lastStep} type="normal">
                     上一步
                   </Button>
                 </Col>
@@ -338,7 +333,7 @@ export default class AddApiForm extends Component {
                   <span>服务类型：</span>
                 </Col>
                 <Col>
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <RadioGroup
                       name="serviceType"
                       dataSource={[
@@ -391,7 +386,7 @@ export default class AddApiForm extends Component {
                   后端请求方法：
               </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
+                  <FormBinder required message="必填项">
                     <Select
                       name="serviceHttpMethod"
                       placeholder="请选择"
@@ -452,7 +447,7 @@ export default class AddApiForm extends Component {
               </Row>
               <Row>
                 <Col offset={7}>
-                  <Button onClick={this.lastStep} type=" ">
+                  <Button onClick={this.lastStep} type="normal">
                     上一步
                   </Button>
                 </Col>
@@ -501,7 +496,6 @@ export default class AddApiForm extends Component {
                   失败响应示例
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder>
                     <Input
                       required
                       message="必填"
@@ -510,7 +504,6 @@ export default class AddApiForm extends Component {
                       size="large"
                       style={{ width: '100%' }}
                     />
-                  </FormBinder>
                   <div style={styles.formErrorWrapper}>
                     <FormError name="sampleFailResult" />
                   </div>
@@ -518,7 +511,7 @@ export default class AddApiForm extends Component {
               </Row>
               <Row>
                 <Col offset={7}>
-                  <Button onClick={this.lastStep} type=" ">
+                  <Button onClick={this.lastStep} type="normal">
                     上一步
                   </Button>
                 </Col>
