@@ -6,6 +6,14 @@
     "currentPage": 1,
     "list": [
       {
+        "id": "d6326b79245148d2857a08e217f49faf",
+        "name": "testapp",
+        "accessKey": "AKIDLBO0QAsbFGSNjDBQS9reS5QT7feq6B2QBcS",
+        "accessSecret": "3c*************5o",
+        "description": "用于测试的应用"
+      }
+      ,
+      {
         "id": "ee56d632eb5648ee815577d3f7a528fb",
         "name": "PC主站",
         "accessKey": "afa90c93455544618ddd8656ef1d1c29",
@@ -58,6 +66,7 @@
         "accessSecret": "9a*************e1",
         "description": "掌链iOS客户端"
       }
+
     ]
   }
 }

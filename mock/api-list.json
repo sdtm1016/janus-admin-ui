@@ -38,9 +38,23 @@
         "type": "公开",
         "groupName": "用于测试的API分组",
         "description": "用于测试的API3",
-        "mtime": 1528182203000,
+        "mtime": 1528183203000,
         "deployInfo": {
           "TEST": "DEPLOYED",
+          "PRE": "NONDEPLOYED",
+          "ONLINE": "NONDEPLOYED"
+        },
+        "ruleName": "生产环境-普通业务限流"
+      },
+      {
+        "id": "eb16bd1830b94c26831eab414f208701",
+        "name": "githubAPI-用户信息",
+        "type": "公开",
+        "groupName": "用于测试的API分组",
+        "description": "githubAPI-用户信息",
+        "mtime": 1528187980000,
+        "deployInfo": {
+          "TEST": "NONDEPLOYED",
           "PRE": "NONDEPLOYED",
           "ONLINE": "NONDEPLOYED"
         },

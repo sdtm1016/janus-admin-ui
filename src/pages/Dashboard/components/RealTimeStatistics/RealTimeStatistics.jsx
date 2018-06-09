@@ -119,6 +119,7 @@ const styles = {
   itemNum: {
     margin: '16px 0',
     fontSize: '32px',
+    color: '#FFF'
   },
   total: {
     margin: 0,

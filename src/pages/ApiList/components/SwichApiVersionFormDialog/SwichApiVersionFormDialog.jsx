@@ -117,10 +117,10 @@ export default class SwichApiVersionFormDialog extends Component {
               </Row>
               <Row style={styles.formRow}>
                 <Col span={`${isMobile ? '9' : '12'}`}>
-                  <label style={styles.formLabel}>当前版本：20180606180715398</label>
+                  <label style={styles.formLabel}>当前版本：20180607835060357</label>
                 </Col>
                 <Col span={`${isMobile ? '9' : '12'}`}>
-                  <label style={styles.formLabel}>切换到版本：20180606180644522</label>
+                  <label style={styles.formLabel}>切换到版本：20180607835003823</label>
                 </Col>
               </Row>
               <Row style={styles.formRow}>

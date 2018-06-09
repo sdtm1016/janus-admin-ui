@@ -183,8 +183,6 @@ export default class AddApiGroupFormDialog extends Component {
                 <Col span={`${isMobile ? '18' : '16'}`}>
                   <IceFormBinder
                     required
-                    min={1}
-                    max={3}
                     message="流量限制非法,需为1-1000"
                   >
                     <Input

@@ -60,11 +60,6 @@ const asideMenuConfig = [
     path: '/app/index',
     icon: 'yonghu',
   },
-  {
-    name: '\u521B\u5EFAAPI',
-    path: '/api/new',
-    icon: 'home',
-  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };

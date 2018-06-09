@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Step, Grid, Input, Button, Select } from '@icedesign/base';
+import { Step, Grid, Input, Button, Select, Checkbox, Radio } from '@icedesign/base';
 import {
   FormBinderWrapper,
   FormBinder,
   FormError,
 } from '@icedesign/form-binder';
+import RequestParamTable from '../RequestParamTable'
+import ServiceParamTable from '../ServiceParamTable'
+import ConstParamTable from '../ConstParamTable'
+import ErrorCodeTable from '../ErrorCodeTable'
 
 const { Row, Col } = Grid;
 const { Option } = Select;
+const { Group: RadioGroup } = Radio;
 const telPattern = /^(1[\d]{1}[\d]{9})|(((400)-(\d{3})-(\d{4}))|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)$|^([ ]?)$/;
 
 export default class AddApiForm extends Component {
@@ -23,14 +28,23 @@ export default class AddApiForm extends Component {
     this.state = {
       step: 0,
       formValue: {
-        username: '',
-        email: '',
-        phone: '',
-        address: '',
-        username1: '',
-        email1: '',
-        phone1: '',
-        address1: '',
+        groupId: 'test',
+        name: '',
+        authType: 'OAuth2.0',
+        signMethod: 'HmacSHA256',
+        type: '',
+        description: '',
+        protocol: '',
+        requestPath: '',
+        requestMethod: '',
+        requestMode: '',
+        serviceType: '',
+        serviceAddress: '',
+        servicePath: '',
+        serviceHttpMethod: '',
+        timeout: 2000,
+        sampleSuccessResult: '',
+        sampleFailResult: '',
       },
     };
   }
@@ -52,12 +66,12 @@ export default class AddApiForm extends Component {
   };
 
   nextStep = () => {
-    this.form.validateAll((error, value) => {
-      console.log(value);
-      if (!error || error.length === 0) {
-        this.setState({ step: this.state.step + 1 });
-      }
-    });
+    // this.form.validateAll((error, value) => {
+    //   console.log(value);
+    //   if (!error || error.length === 0) {
+    this.setState({ step: this.state.step + 1 });
+    //   }
+    // });
   };
   lastStep = () => {
     this.setState({ step: this.state.step - 1 });
@@ -93,9 +107,10 @@ export default class AddApiForm extends Component {
                       placeholder="请选择"
                       style={styles.filterTool}
                     >
-                      <Option value="1">test</Option>
-                      <Option value="2">test2</Option>
-                      <Option value="3">test3</Option>
+                      <Option value="test">用于测试的API分组</Option>
+                      <Option value="test1">test1</Option>
+                      <Option value="test2">test2</Option>
+                      <Option value="test3">test3</Option>
                     </Select>
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
@@ -105,64 +120,66 @@ export default class AddApiForm extends Component {
               </Row>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  <span>姓名：</span>
+                  <span>名称：</span>
                 </Col>
                 <Col s="14" l="12">
                   <FormBinder required message="必填项">
                     <Input
-                      name="username"
+                      name="name"
                       size="large"
                       style={{ width: '100%' }}
                     />
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="username" />
+                    <FormError name="name" />
                   </div>
                 </Col>
               </Row>
-
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  邮箱：
+                  <span>认证方式：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder type="email" required message="邮箱不合法">
-                    <Input
-                      name="email"
-                      size="large"
-                      style={{ width: '100%' }}
-                    />
+                  <FormBinder>
+                    <Select
+                      name="authType"
+                      placeholder="请选择"
+                      style={styles.filterTool}
+                    >
+                      <Option value="NON">无认证</Option>
+                      <Option value="OAuth2">OAuth2.0客户端模式</Option>
+                      <Option value="sign">签名模式</Option>
+                    </Select>
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="email" />
+                    <FormError name="authType" />
                   </div>
                 </Col>
               </Row>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  电话：
+                  <span>签名算法：</span>
                 </Col>
                 <Col s="14" l="12">
-                  <FormBinder
-                    required
-                    message="请输入合法的电话号码"
-                    pattern={telPattern}
-                    triggerType="onBlur"
-                  >
-                    <Input
-                      name="phone"
-                      size="large"
-                      style={{ width: '100%' }}
-                    />
+                  <FormBinder>
+                    <Select
+                      name="signMethod"
+                      placeholder="请选择"
+                      style={styles.filterTool}
+                    >
+                      <Option value="HmacSHA256">HmacSHA256</Option>
+                      <Option value="HmacSHA1">HmacSHA1</Option>
+                      <Option value="NON">无认证</Option>
+                    </Select>
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="phone" />
+                    <FormError name="signMethod" />
                   </div>
                 </Col>
               </Row>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  地址：
+                  描述：
                 </Col>
                 <Col s="14" l="12">
                   <FormBinder>
@@ -170,17 +187,16 @@ export default class AddApiForm extends Component {
                       required
                       message="必填"
                       multiple
-                      name="address"
+                      name="description"
                       size="large"
                       style={{ width: '100%' }}
                     />
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="address" />
+                    <FormError name="description" />
                   </div>
                 </Col>
               </Row>
-
               <Row>
                 <Col offset={7}>
                   <Button onClick={this.nextStep} type="primary">
@@ -205,106 +221,95 @@ export default class AddApiForm extends Component {
             <div>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  <span>分组：</span>
+                  <span>协议：</span>
                 </Col>
                 <Col s="14" l="12">
                   <FormBinder>
-                    <Select
-                      name="groupId"
-                      placeholder="请选择"
-                      style={styles.filterTool}
-                    >
-                      <Option value="1">test</Option>
-                      <Option value="2">test2</Option>
-                      <Option value="3">test3</Option>
-                    </Select>
+                    <Checkbox.Group name="protocol" style={{ width: '100%' }}>
+                      <Row>
+                        <Col span={4}><Checkbox value="HTTP">HTTP</Checkbox></Col>
+                        <Col span={4}><Checkbox value="HTTPS">HTTPS</Checkbox></Col>
+                      </Row>
+                    </Checkbox.Group>
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="groupId" />
+                    <FormError name="protocol" />
                   </div>
                 </Col>
               </Row>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  <span>姓名：</span>
+                  <span>请求路径：</span>
                 </Col>
                 <Col s="14" l="12">
                   <FormBinder required message="必填项">
                     <Input
-                      name="username1"
+                      name="requestPath"
                       size="large"
                       style={{ width: '100%' }}
                     />
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="username1" />
+                    <FormError name="requestPath" />
                   </div>
                 </Col>
               </Row>
 
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  邮箱：
-                </Col>
-                <Col s="14" l="12">
-                  <FormBinder type="email1" required message="邮箱不合法">
-                    <Input
-                      name="email"
-                      size="large"
-                      style={{ width: '100%' }}
-                    />
-                  </FormBinder>
-                  <div style={styles.formErrorWrapper}>
-                    <FormError name="email1" />
-                  </div>
-                </Col>
-              </Row>
-              <Row style={styles.formRow}>
-                <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  电话：
-                </Col>
-                <Col s="14" l="12">
-                  <FormBinder
-                    required
-                    message="请输入合法的电话号码"
-                    pattern={telPattern}
-                    triggerType="onBlur"
-                  >
-                    <Input
-                      name="phone1"
-                      size="large"
-                      style={{ width: '100%' }}
-                    />
-                  </FormBinder>
-                  <div style={styles.formErrorWrapper}>
-                    <FormError name="phone1" />
-                  </div>
-                </Col>
-              </Row>
-              <Row style={styles.formRow}>
-                <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  地址：
+                  <span>HTTP方法：</span>
                 </Col>
                 <Col s="14" l="12">
                   <FormBinder>
-                    <Input
-                      required
-                      message="必填"
-                      multiple
-                      name="address1"
-                      size="large"
-                      style={{ width: '100%' }}
-                    />
+                    <Select
+                      name="requestMethod"
+                      placeholder="请选择"
+                      style={styles.filterTool}
+                    >
+                      <Option value="GET">GET</Option>
+                      <Option value="POST">POST</Option>
+                      <Option value="PUT">PUT</Option>
+                      <Option value="DELETE">DELETE</Option>
+                      <Option value="HEAD">HEAD</Option>
+                      <Option value="PATCH">PATCH</Option>
+                      <Option value="ANY">ANY</Option>
+                    </Select>
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="address1" />
+                    <FormError name="requestMethod" />
                   </div>
                 </Col>
               </Row>
 
+              <Row style={styles.formRow}>
+                <Col xxs="5" s="5" l="7" style={styles.formLabel}>
+                  <span>入参映射：</span>
+                </Col>
+                <Col s="14" l="12">
+                  <FormBinder>
+                    <Select
+                      name="requestMode"
+                      placeholder="请选择"
+                      style={styles.filterTool}
+                    >
+                      <Option value="DELETE">入参映射</Option>
+                      <Option value="HEAD">入参透传</Option>
+                    </Select>
+                  </FormBinder>
+                  <div style={styles.formErrorWrapper}>
+                    <FormError name="requestMode" />
+                  </div>
+                </Col>
+              </Row>
+
+              <Row style={styles.formRow}>
+                <Col>
+                  <RequestParamTable />
+                </Col>
+              </Row>
               <Row>
                 <Col offset={7}>
-                  <Button onClick={this.lastStep} type="default">
+                  <Button onClick={this.lastStep} type=" ">
                     上一步
                   </Button>
                 </Col>
@@ -330,108 +335,199 @@ export default class AddApiForm extends Component {
             <div>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  <span>分组：</span>
+                  <span>服务类型：</span>
                 </Col>
-                <Col s="14" l="12">
+                <Col>
                   <FormBinder>
-                    <Select
-                      name="groupId"
-                      placeholder="请选择"
-                      style={styles.filterTool}
-                    >
-                      <Option value="1">test</Option>
-                      <Option value="2">test2</Option>
-                      <Option value="3">test3</Option>
-                    </Select>
+                    <RadioGroup
+                      name="serviceType"
+                      dataSource={[
+                        {
+                          value: 'HTTP',
+                          label: 'HTTP/HTTPS',
+                        }
+                      ]}
+                    />
                   </FormBinder>
-                  <div style={styles.formErrorWrapper}>
-                    <FormError name="groupId" />
-                  </div>
                 </Col>
               </Row>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  <span>姓名：</span>
+                  <span>后端服务地址：</span>
                 </Col>
                 <Col s="14" l="12">
                   <FormBinder required message="必填项">
                     <Input
-                      name="username"
+                      name="serviceAdress"
                       size="large"
                       style={{ width: '100%' }}
                     />
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="username" />
+                    <FormError name="serviceAdress" />
                   </div>
                 </Col>
               </Row>
 
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  邮箱：
+                  后端请求路径：
               </Col>
                 <Col s="14" l="12">
-                  <FormBinder type="email" required message="邮箱不合法">
+                  <FormBinder required message="路径不合法">
                     <Input
-                      name="email"
+                      name="servicePath"
                       size="large"
                       style={{ width: '100%' }}
                     />
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="email" />
+                    <FormError name="servicePath" />
                   </div>
                 </Col>
               </Row>
               <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  电话：
+                  后端请求方法：
               </Col>
                 <Col s="14" l="12">
+                  <FormBinder>
+                    <Select
+                      name="serviceHttpMethod"
+                      placeholder="请选择"
+                      style={styles.filterTool}
+                    >
+                      <Option value="GET">GET</Option>
+                      <Option value="POST">POST</Option>
+                      <Option value="PUT">PUT</Option>
+                      <Option value="DELETE">DELETE</Option>
+                      <Option value="HEAD">HEAD</Option>
+                      <Option value="PATCH">PATCH</Option>
+                      <Option value="ANY">ANY</Option>
+                    </Select>
+                  </FormBinder>
+                  <div style={styles.formErrorWrapper}>
+                    <FormError name="serviceHttpMethod" />
+                  </div>
+                </Col>
+              </Row>
+
+              <Row style={styles.formRow}>
+                <Col xxs="5" s="5" l="7" style={styles.formLabel}>
+                  超时时间：
+              </Col>
+                <Col s="13" l="11">
                   <FormBinder
                     required
-                    message="请输入合法的电话号码"
-                    pattern={telPattern}
-                    triggerType="onBlur"
+                    message="请输入合法的超时时间"
                   >
                     <Input
-                      name="phone"
+                      name="timeout"
                       size="large"
                       style={{ width: '100%' }}
                     />
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="phone" />
+                    <FormError name="timeout" />
                   </div>
+                </Col>
+                <Col s="1" l="1" style={styles.formLabel}>
+                  <span>毫秒</span>
                 </Col>
               </Row>
               <Row style={styles.formRow}>
+                <Col>
+                  <ServiceParamTable />
+                </Col>
+              </Row>
+              <Row style={styles.formRow}>
+                <Col>
+                  <ConstParamTable />
+                </Col>
+              </Row>
+              <Row style={styles.formRow}>
+                <Col>
+                  <ErrorCodeTable />
+                </Col>
+              </Row>
+              <Row>
+                <Col offset={7}>
+                  <Button onClick={this.lastStep} type=" ">
+                    上一步
+                  </Button>
+                </Col>
+                <Col>
+                  <Button onClick={this.nextStep} type="primary">
+                    下一步
+                  </Button>
+                </Col>
+              </Row>
+            </div>
+          </FormBinderWrapper>
+        </IceContainer>
+      );
+    } else if (step === 3) {
+      return (
+        <IceContainer style={styles.form}>
+          <FormBinderWrapper
+            ref={(form) => {
+              this.form = form;
+            }}
+            onChange={this.formChange}
+          >
+            <div>
+              <Row style={styles.formRow}>
                 <Col xxs="5" s="5" l="7" style={styles.formLabel}>
-                  地址：
-              </Col>
+                  成功响应示例
+                </Col>
                 <Col s="14" l="12">
                   <FormBinder>
                     <Input
                       required
                       message="必填"
                       multiple
-                      name="address"
+                      name="sampleSuccessResult"
                       size="large"
                       style={{ width: '100%' }}
                     />
                   </FormBinder>
                   <div style={styles.formErrorWrapper}>
-                    <FormError name="address" />
+                    <FormError name="sampleSuccessResult" />
                   </div>
                 </Col>
               </Row>
-
+              <Row style={styles.formRow}>
+                <Col xxs="5" s="5" l="7" style={styles.formLabel}>
+                  失败响应示例
+                </Col>
+                <Col s="14" l="12">
+                  <FormBinder>
+                    <Input
+                      required
+                      message="必填"
+                      multiple
+                      name="sampleFailResult"
+                      size="large"
+                      style={{ width: '100%' }}
+                    />
+                  </FormBinder>
+                  <div style={styles.formErrorWrapper}>
+                    <FormError name="sampleFailResult" />
+                  </div>
+                </Col>
+              </Row>
               <Row>
                 <Col offset={7}>
-                  <Button onClick={this.nextStep} type="primary">
-                    下一步
-                </Button>
+                  <Button onClick={this.lastStep} type=" ">
+                    上一步
+                  </Button>
+                </Col>
+                <Col>
+                  <Button type="primary">
+                    <a href="/#/api/index" style={styles.buttonA}>
+                      完成
+                    </a>
+                  </Button>
                 </Col>
               </Row>
             </div>
@@ -446,9 +542,10 @@ export default class AddApiForm extends Component {
       <div className="simple-fluency-form">
         <IceContainer>
           <Step current={this.state.step} type="dot">
-            <Step.Item key={0} title="填写信息" />
-            <Step.Item key={1} title="确认信息" />
-            <Step.Item key={2} title="完成" />
+            <Step.Item key={0} title="基本信息" />
+            <Step.Item key={1} title="请求信息" />
+            <Step.Item key={2} title="服务信息" />
+            <Step.Item key={3} title="响应信息" />
           </Step>
         </IceContainer>
         {this.renderStep(this.state.step)}
@@ -473,4 +570,8 @@ const styles = {
     marginTop: '5px',
   },
   simpleFluencyForm: {},
+  buttonA: {
+    textDecoration: 'none',
+    color: '#FFF'
+  }
 };

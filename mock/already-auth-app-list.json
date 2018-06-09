@@ -7,24 +7,11 @@
     "list": [
       
       {
-        "id": "05be86f3809147238373eafca94a2a48",
-        "name": "LinkAndroid"
-      },
-      {
-        "id": "fe587a683b5c4b189ce9e6909e666a0a",
-        "name": "LinkiOS"
-      },
-      {
-        "id": "323048b57572437a826bf473ec86617c",
-        "name": "LinkOldAndroid"
-      },
-      {
-        "id": "71a554e8153d471bbd83cf7ef98a019f",
-        "name": "LinkOldiOS"
-      },
-      {
-        "id": "feb1f33f9cdd4efeb2d64e7a35d39f3c",
-        "name": "子公司_贝壳平台"
+        "id": "d6326b79245148d2857a08e217f49faf",
+        "name": "testapp",
+        "accessKey": "AKIDLBO0QAsbFGSNjDBQS9reS5QT7feq6B2QBcS",
+        "accessSecret": "3c*************5o",
+        "description": "用于测试的应用"
       }
     ]
   }

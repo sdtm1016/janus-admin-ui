@@ -22,18 +22,19 @@ import AppList from './pages/AppList';
 import ApiGroupDetail from './pages/ApiGroupDetail';
 
 import ApiAddForm from './pages/ApiAddForm';
+
 import Login from './pages/Login';
 
 const routerConfig = [
   {
-    path: '/IPStrategy/index',
-    layout: HeaderAsideFooterResponsiveLayout,
-    component: IpStrategyList,
-  },
-  {
     path: '/',
     layout: HeaderAsideFooterResponsiveLayout,
     component: Dashboard,
+  },
+  {
+    path: '/auth/index',
+    layout: HeaderAsideFooterResponsiveLayout,
+    component: ServiceAuthList,
   },
   {
     path: '/login',
@@ -56,9 +57,9 @@ const routerConfig = [
     component: ApiList,
   },
   {
-    path: '/auth/index',
+    path: '/IPStrategy/index',
     layout: HeaderAsideFooterResponsiveLayout,
-    component: ServiceAuthList,
+    component: IpStrategyList,
   },
   {
     path: '/app/index',

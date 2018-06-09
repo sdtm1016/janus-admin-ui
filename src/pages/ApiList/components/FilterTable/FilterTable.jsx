@@ -10,9 +10,10 @@ import ApiAuthFormDialog from '../ApiAuthFormDialog';
 import ApiOfflineFormDialog from '../ApiOfflineFormDialog';
 import SwichApiVersionFormDialog from '../SwichApiVersionFormDialog';
 import ApiDeployTableDialog from '../ApiDeployTableDialog';
-import { Dialog, Grid, Input, Radio, Button } from '@icedesign/base';
+import { Dialog, Grid, Input, Radio } from '@icedesign/base';
 import './index.css'
-
+import { Button } from 'antd';
+import 'antd/dist/antd.css'
 const { Row, Col } = Grid;
 
 @DataBinder({
@@ -99,15 +100,17 @@ export default class EnhanceTable extends Component {
   renderStatus = (value, index, record) => {
     return (
       <div>
-        <div align='right'>
-          测试：<IceLabel inverse={false} status={record.deployInfo.TEST == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.TEST == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
-        </div>
-        <div align='right'>
-          预发布：<IceLabel inverse={false} status={record.deployInfo.PRE == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.PRE == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
-        </div>
-        <div align='right'>
-          线上：<IceLabel inverse={false} status={record.deployInfo.ONLINE == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.ONLINE == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
-        </div>
+          <div align='right'>
+            测试：<IceLabel inverse={false} status={record.deployInfo.TEST == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.TEST == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
+          </div>
+
+          <div align='right'>
+            预发布：<IceLabel inverse={false} status={record.deployInfo.PRE == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.PRE == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
+          </div>
+          <div align='right'>
+            线上：<IceLabel inverse={false} status={record.deployInfo.ONLINE == 'DEPLOYED' ? 'success' : 'default'}>{record.deployInfo.ONLINE == 'DEPLOYED' ? '已发布' : '未发布'}</IceLabel>
+          </div>
+
       </div>
     );
   };
@@ -158,6 +161,12 @@ export default class EnhanceTable extends Component {
           />
         </IceContainer>
         <IceContainer>
+          <Row>
+            <Col span={2} offset={22}>
+              <Button href="/#/api/new" type="primary" style={styles.buttonA}>新建API</Button>
+            </Col>
+          </Row>
+
           <Table
             dataSource={tableData.list}
             isLoading={tableData.__loading}
@@ -179,7 +188,7 @@ export default class EnhanceTable extends Component {
             <Table.Column
               title="状态"
               cell={this.renderStatus}
-              width={120}
+              width={140}
             />
             <Table.Column
               title="操作"
@@ -223,4 +232,8 @@ const styles = {
     textAlign: 'right',
     paddingTop: '26px',
   },
+  buttonA: {
+    textDecoration: 'none',
+    color: '#FFF'
+  }
 };
